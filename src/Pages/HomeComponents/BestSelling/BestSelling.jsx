@@ -1,13 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useProducts from '../../../hooks/useProducts';
 import SellingCard from '../SellingCard/SellingCard';
 
 const BestSelling = () => {
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch('data.json')
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
-  }, []);
+  const [products] = useProducts();
   return (
     <div
       style={{ maxWidth: '1300px' }}
