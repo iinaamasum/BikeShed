@@ -1,14 +1,22 @@
-import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import React, { useEffect } from 'react';
 import fech1 from '../../../images/image/chris-barbalis-Lpqg7ypu2B4-unsplash.jpg';
 import fech2 from '../../../images/image/mac-blades-jpgJSBQtw5U-unsplash.jpg';
 import fech3 from '../../../images/image/tiffany-nutt-0ClfreiNppM-unsplash.jpg';
 import './FeaturedItems.css';
 
 const FeaturedItems = () => {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 bg-gray-700">
         <div
+          data-aos="fade-up"
           style={{
             backgroundImage: `url(${fech1})`,
           }}
@@ -32,6 +40,7 @@ const FeaturedItems = () => {
         </div>
 
         <div
+          data-aos="fade-up"
           style={{
             backgroundImage: `url(${fech2})`,
           }}
@@ -54,6 +63,7 @@ const FeaturedItems = () => {
           </div>
         </div>
         <div
+          data-aos="fade-up"
           style={{
             backgroundImage: `url(${fech3})`,
           }}

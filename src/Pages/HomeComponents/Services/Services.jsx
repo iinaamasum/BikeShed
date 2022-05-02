@@ -1,54 +1,50 @@
-import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import React, { useEffect } from 'react';
 import ban1 from '../../../images/image/ban2.jpg';
 import ban2 from '../../../images/image/viktor-keri-0gLH1kqRldc-unsplash.jpg';
 import Service from '../Service/Service';
 
 const Services = () => {
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
   return (
     <>
-      <div className="">
+      <div className="bg-gray-800">
         <div className="grid grid-cols-1 md:grid-cols-2">
           <div
+            data-aos="fade-up"
             style={{
               backgroundImage: `url(${ban1})`,
             }}
-            className="h-60 md:h-96 bg-cover bg-center"
+            className="h-60 md:h-96 bg-cover bg-center hover:-translate-x-10 transition-all duration-100"
           >
-            <div className="backdrop__blur w-full h-full pt-10 md:pt-24">
+            <div className="backdrop__blur w-full h-full pt-3">
               <div className="pl-4 flex items-center">
                 <div className="">
                   <h3 className="text-5xl font-bold text-white mb-2">
-                    Single track Speed
+                    Mens Bike
                   </h3>
-                  <p className="text-gray-300 text-lg font-semibold">
-                    The all new pro 29 series
-                  </p>
-                  <button className="bg-purple-500 py-2 px-4 rounded text-white font-semibold">
-                    Learn More
-                  </button>
                 </div>
               </div>
             </div>
           </div>
 
           <div
+            data-aos="fade-up"
             style={{
               backgroundImage: `url(${ban2})`,
             }}
-            className="h-60 md:h-96 bg-cover bg-center"
+            className="h-60 md:h-96 bg-cover bg-center hover:-translate-x-10 transition-all duration-100"
           >
-            <div className="backdrop__blur w-full h-full pt-10 md:pt-24">
+            <div className="backdrop__blur w-full h-full pt-3">
               <div className="pl-4 flex items-center">
                 <div className="">
                   <h3 className="text-5xl font-bold text-white mb-2">
-                    Single track Speed
+                    Accessories
                   </h3>
-                  <p className="text-gray-300 text-lg font-semibold">
-                    The all new pro 29 series
-                  </p>
-                  <button className="bg-purple-500 py-2 px-4 rounded text-white font-semibold">
-                    Learn More
-                  </button>
                 </div>
               </div>
             </div>
