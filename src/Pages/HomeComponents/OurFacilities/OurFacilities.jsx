@@ -8,7 +8,7 @@ const OurFacilities = () => {
     <div>
       <div
         style={{ maxWidth: '1300px' }}
-        className="container mx-auto px-4 my-10 md:my-20"
+        className="container mx-auto px-4 my-10 md:my-32"
       >
         <h4 className="text-center font-serif text-red-500 ">
           YOUR RIDE START HERE.
