@@ -37,16 +37,16 @@ const Navbar = () => {
               {!open ? <GiHamburgerMenu size={30} /> : <CgClose size={30} />}
             </button>
           </div>
-          <div className="lg:flex lg:items-center lg:w-2/3 justify-end">
+          <div className="lg:flex lg:items-center lg:w-4/5 justify-end">
             <div
               className={`lg:flex flex-grow items-between
               ${open ? 'block' : 'hidden'}`}
             >
               <div className="lg:flex lg:items-center lg:justify-between w-full lg:w-auto">
-                <div className="w-full lg:w-auto">
+                <div className="w-full lg:w-auto lg:mr-auto">
                   {navLinksOne.map((link) => (
                     <Link
-                      className="block my-2 lg:my-0 w-full lg:w-auto lg:inline-block mr-0 md:mr-6 font-semibold hover:text-red-800"
+                      className="block my-2 lg:my-0 w-full lg:w-auto lg:inline-block mr-0 md:mr-4 font-semibold hover:text-red-800"
                       to={link.path}
                       key={link.id}
                     >
@@ -61,6 +61,19 @@ const Navbar = () => {
               className={`lg:flex flex-grow items-between
               ${open ? 'block' : 'hidden'}`}
             >
+              <div className="lg:flex lg:items-center lg:justify-between w-full lg:w-auto ml-auto">
+                <div className="w-full lg:w-auto">
+                  {navLinksTwo.map((link) => (
+                    <Link
+                      className="block my-2 lg:my-0 w-full lg:w-auto lg:inline-block mr-0 md:mr-4 font-semibold text-red-800 hover:text-gray-600"
+                      to={link.path}
+                      key={link.id}
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
               <button
                 onClick={() => navigate('/login')}
                 className="text-black my-2 lg:my-0 font-sans tracking-wider font-semibold text-md mr-3 hover:bg-gray-100 px-5 py-1 rounded-full hover:text-red-700 shadow hover:shadow outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150 lg:w-auto"

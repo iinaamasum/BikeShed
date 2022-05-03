@@ -1,12 +1,64 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+} from 'react-firebase-hooks/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import AlternativeNavbar from '../../Shared/AlternativeNavbar/AlternativeNavbar';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const LogIn = () => {
+  const [signInWithEmailAndPassword, userLogin, loadingLogin, errorLogin] =
+    useSignInWithEmailAndPassword(auth);
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  const [userData, setUserData] = useState({
+    email: '',
+    pass: '',
+  });
+  const [errors, setErrors] = useState({
+    emailError: '',
+    passError: '',
+  });
+
+  const handleEmail = (e) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (regex.test(e.target.value)) {
+      setUserData({ ...userData, email: e.target.value });
+      setErrors({ ...errors, emailError: '' });
+    } else {
+      setErrors({ ...errors, emailError: 'Invalid Email' });
+      setUserData({ ...userData, email: '' });
+    }
+  };
+
+  const handlePass = (e) => {
+    if (e.target.value.length >= 6) {
+      setUserData({ ...userData, pass: e.target.value });
+      setErrors({ ...errors, passError: '' });
+    } else {
+      setUserData({ ...userData, pass: '' });
+      setErrors({
+        ...errors,
+        passError:
+          'Please Enter a password of six character with an special char!!!',
+      });
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (userData.email === '') {
+      setErrors({ ...errors, emailError: 'Email is required' });
+    } else if (userData.pass === '') {
+      setErrors({ ...errors, passError: 'Password is required' });
+    } else {
+      signInWithEmailAndPassword(userData.email, userData.pass);
+    }
   };
+
+  useEffect(() => {}, []);
   return (
     <div>
       <AlternativeNavbar />
@@ -40,6 +92,7 @@ const LogIn = () => {
                 Email
               </label>
               <input
+                onChange={handleEmail}
                 type="email"
                 name="email"
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
@@ -54,6 +107,7 @@ const LogIn = () => {
                 Password
               </label>
               <input
+                onChange={handlePass}
                 type="password"
                 name="password"
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
