@@ -1,11 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import AlternativeNavbar from '../../Shared/AlternativeNavbar/AlternativeNavbar';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const SignUp = () => {
+  const [createUserWithEmailAndPassword, userInput, loadingInput, errorInput] =
+    useCreateUserWithEmailAndPassword(auth);
+  const [userData, setUserData] = useState({
+    email: '',
+    pass: '',
+    confirmPass: '',
+    name: '',
+  });
+  const [errors, setErrors] = useState({
+    emailError: '',
+    passError: '',
+    confirmPassError: '',
+    nameError: '',
+  });
+  const handleEmail = (e) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (regex.test(e.target.value)) {
+      setUserData({ ...userData, email: e.target.value });
+      setErrors({ ...errors, emailError: '' });
+    } else {
+      setErrors({ ...errors, emailError: 'Invalid Email' });
+      setUserData({ ...userData, email: '' });
+    }
+  };
+  const handlePass = (e) => {
+    const regex = /(?=.*[!#$%&?^*@~() "])/;
+    if (regex.test(e.target.value)) {
+      setUserData({ ...userData, pass: e.target.value });
+      setErrors({ ...errors, passError: '' });
+    } else {
+      setUserData({ ...userData, pass: '' });
+      setErrors({
+        ...errors,
+        passError:
+          'Please Enter a password of six character with an special char!!!',
+      });
+    }
+  };
+  const handleConfirmPass = (e) => {
+    if (e.target.value === userData.pass) {
+      setUserData({ ...userData, confirmPass: e.target.value });
+      setErrors({ ...errors, confirmPassError: '' });
+    } else {
+      setUserData({ ...userData, confirmPass: '' });
+      setErrors({ ...errors, confirmPassError: 'Password does not match' });
+    }
+  };
+  const handleName = (e) => {
+    const regex = /^[a-zA-Z]+$/;
+    if (regex.test(e.target.value)) {
+      setUserData({ ...userData, name: e.target.value });
+      setErrors({ ...errors, nameError: '' });
+    } else {
+      setUserData({ ...userData, name: '' });
+      setErrors({
+        ...errors,
+        nameError: 'Invalid Name Format. Only letters are allowed',
+      });
+    }
+  };
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (userData.pass === userData.confirmPass) {
+      createUserWithEmailAndPassword(userData.email, userData.pass);
+    }
   };
   return (
     <div>
@@ -34,15 +99,20 @@ const SignUp = () => {
                 htmlFor="full-name"
                 className="leading-7 text-sm text-gray-600"
               >
-                Full Name
+                Full Name{' '}
+                <span className="text-sm text-gray-500">(optional)</span>
               </label>
               <input
+                onChange={handleName}
                 type="text"
                 id="full-name"
                 name="full-name"
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 placeholder="Your Name"
               />
+              <p className="text-sm text-red-600 font-medium">
+                {errors?.nameError ? errors.nameError : ''}
+              </p>
             </div>
             <div className="relative mb-4">
               <label
@@ -52,11 +122,15 @@ const SignUp = () => {
                 Email
               </label>
               <input
+                onChange={handleEmail}
                 type="email"
                 name="email"
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 placeholder="Your Email"
               />
+              <p className="text-sm text-red-600 font-medium">
+                {errors?.emailError ? errors.emailError : ''}
+              </p>
             </div>
             <div className="relative mb-4">
               <label
@@ -66,11 +140,15 @@ const SignUp = () => {
                 Password
               </label>
               <input
+                onChange={handlePass}
                 type="password"
                 name="password"
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 placeholder="Password"
               />
+              <p className="text-sm text-red-600 font-medium">
+                {errors?.passError ? errors.passError : ''}
+              </p>
             </div>
             <div className="relative mb-4">
               <label
@@ -80,11 +158,15 @@ const SignUp = () => {
                 Confirm Password
               </label>
               <input
+                onChange={handleConfirmPass}
                 type="password"
                 name="confirm-password"
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 placeholder="Confirm Password"
               />
+              <p className="text-sm text-red-600 font-medium">
+                {errors?.confirmPassError ? errors.confirmPassError : ''}
+              </p>
             </div>
             <p className="">
               Already have an account?{' '}

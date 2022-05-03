@@ -32,7 +32,7 @@ const Footer = () => {
               <nav className="">
                 {navLinksOne.map((link) => (
                   <Link
-                    className="block text-slate-300 hover:text-gray-800"
+                    className="block text-slate-300 hover:text-red-600"
                     to={link.path}
                     key={link.id}
                   >
@@ -48,7 +48,7 @@ const Footer = () => {
               <nav className="list-none">
                 {navLinksTwo.map((link) => (
                   <Link
-                    className="block text-slate-300 hover:text-gray-800"
+                    className="block text-slate-300 hover:text-red-600"
                     to={link.path}
                     key={link.id}
                   >
