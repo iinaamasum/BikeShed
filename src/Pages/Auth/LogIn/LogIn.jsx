@@ -3,12 +3,15 @@ import {
   useAuthState,
   useSignInWithEmailAndPassword,
 } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import AlternativeNavbar from '../../Shared/AlternativeNavbar/AlternativeNavbar';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const LogIn = () => {
+  // redirect to desired or home page if user is logged in
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
   const [signInWithEmailAndPassword, userLogin, loadingLogin, errorLogin] =
     useSignInWithEmailAndPassword(auth);
   const [user, loading, error] = useAuthState(auth);
@@ -57,6 +60,12 @@ const LogIn = () => {
       signInWithEmailAndPassword(userData.email, userData.pass);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, navigate, from]);
 
   useEffect(() => {}, []);
   return (

@@ -75,7 +75,7 @@ const Footer = () => {
                   placeholder="Enter your opinion..."
                 ></textarea>
                 <label
-                  for="footer-field"
+                  htmlFor="footer-field"
                   className="leading-7 text-sm text-slate-300"
                 >
                   Email

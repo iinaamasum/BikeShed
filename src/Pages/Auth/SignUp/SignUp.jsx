@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+} from 'react-firebase-hooks/auth';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import AlternativeNavbar from '../../Shared/AlternativeNavbar/AlternativeNavbar';
 import SocialLogin from '../SocialLogin/SocialLogin';
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
   const [createUserWithEmailAndPassword, userInput, loadingInput, errorInput] =
     useCreateUserWithEmailAndPassword(auth);
+  const [user, loading, error] = useAuthState(auth);
   const [userData, setUserData] = useState({
     email: '',
     pass: '',
@@ -72,6 +79,13 @@ const SignUp = () => {
       createUserWithEmailAndPassword(userData.email, userData.pass);
     }
   };
+
+  useEffect(() => {
+    if (user) {
+      user.displayName = userData.name;
+      navigate(from, { replace: true });
+    }
+  }, [user]);
   return (
     <div>
       <AlternativeNavbar />
