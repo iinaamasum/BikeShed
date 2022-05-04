@@ -1,9 +1,26 @@
 import React from 'react';
 import { MdOutlinePublishedWithChanges } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
+import useProducts from '../../hooks/useProducts';
 
 const ProductsTable = (props) => {
-  const { img, name, sup_name, quantity, price } = props.product;
+  const [products, setProducts] = useProducts();
+  const { _id, img, name, sup_name, quantity, price } = props.product;
+  const handleDelete = (id) => {
+    const url = `http://localhost:5000/product/${id}`;
+
+    fetch(url, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          const left = products.filter((product) => product._id !== id);
+          setProducts(left);
+          console.log(data);
+        }
+      });
+  };
   return (
     <tbody>
       <tr className="border-b">
@@ -29,6 +46,7 @@ const ProductsTable = (props) => {
               className="mr-2 cursor-pointer text-green-600"
             />
             <RiDeleteBin2Fill
+              onClick={() => handleDelete(_id)}
               size={30}
               className="cursor-pointer text-red-600"
             />

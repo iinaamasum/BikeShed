@@ -10,7 +10,7 @@ const useSingleProduct = (id) => {
   }, [id]);
   // console.log(product);
 
-  return [product];
+  return [product, setProduct];
 };
 
 export default useSingleProduct;
