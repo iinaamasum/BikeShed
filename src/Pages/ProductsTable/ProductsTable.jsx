@@ -1,11 +1,14 @@
 import React from 'react';
 import { MdOutlinePublishedWithChanges } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
+import { useNavigate, useParams } from 'react-router-dom';
 import useProducts from '../../hooks/useProducts';
 
 const ProductsTable = (props) => {
   const [products, setProducts] = useProducts();
+  const navigate = useNavigate();
   const { _id, img, name, sup_name, quantity, price } = props.product;
+  const { productId } = useParams();
   const handleDelete = (id) => {
     const url = `http://localhost:5000/product/${id}`;
 
@@ -42,6 +45,7 @@ const ProductsTable = (props) => {
         <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
           <div className="flex">
             <MdOutlinePublishedWithChanges
+              onClick={() => navigate(`/productUpdate/${_id}`)}
               size={30}
               className="mr-2 cursor-pointer text-green-600"
             />
