@@ -6,23 +6,23 @@ const ProductsTable = (props) => {
   const { img, name, sup_name, quantity, price } = props.product;
   return (
     <tbody>
-      <tr class="border-b">
-        <td class="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-900">
+      <tr className="border-b">
+        <td className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-900">
           <img className="h-20 w-20 rounded-full" src={img} alt="" />
         </td>
-        <td class="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
           {name}
         </td>
-        <td class="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
           {sup_name}
         </td>
-        <td class="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
           {price}
         </td>
-        <td class="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
           {quantity}
         </td>
-        <td class="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
           <div className="flex">
             <MdOutlinePublishedWithChanges
               size={30}

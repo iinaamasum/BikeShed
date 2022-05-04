@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const SellingCard = (props) => {
-  const { img, name, price, quantity, sup_name, des, id } = props.product;
+  const { img, name, price, quantity, sup_name, des, _id } = props.product;
   useEffect(() => {
     AOS.init();
     AOS.refresh();
@@ -24,7 +24,7 @@ const SellingCard = (props) => {
             src="https://dummyimage.com/722x402"
             alt="content"
           />
-          <h3 className="tracking-widest text-red-500 text-xs font-medium title-font px-2">
+          <h3 className="tracking-w_idest text-red-500 text-xs font-medium title-font px-2">
             Suplier: {sup_name}
           </h3>
           <h2 className="text-lg text-gray-900 font-medium title-font mb-4 px-2">
@@ -39,7 +39,7 @@ const SellingCard = (props) => {
               <p>Items Left: {quantity}</p>
             </div>
             <button
-              onClick={() => navigate(`/productUpdate/${id}`)}
+              onClick={() => navigate(`/productUpdate/${_id}`)}
               className="w-full text-center bg-blue-600 py-2 rounded text-white font-bold hover:bg-blue-800"
             >
               Update This Product
