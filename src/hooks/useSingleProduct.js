@@ -7,7 +7,7 @@ const useSingleProduct = (id) => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setProduct(data));
-  }, [id]);
+  }, [product]);
   // console.log(product);
 
   return [product, setProduct];

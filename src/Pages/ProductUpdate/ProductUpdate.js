@@ -6,8 +6,28 @@ import Navbar from '../Shared/Navbar/Navbar';
 
 const ProductUpdate = () => {
   const { productId } = useParams();
-  const [product] = useSingleProduct(productId);
+  const [product, setProduct] = useSingleProduct(productId);
   const { _id, name, img, des, price, quantity, sup_name } = product;
+  const handleRemoveOne = (id) => {
+    // const q = product.quantity - 1;
+    product.quantity -= 1;
+    // console.log(product.quantity);
+    const url = `http://localhost:5000/product/${id}`;
+    fetch(url, {
+      method: 'PUT',
+      body: JSON.stringify({
+        quantity: product.quantity,
+      }),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProduct(product);
+        // console.log(product);
+      });
+  };
   return (
     <div>
       <Navbar />
@@ -39,6 +59,12 @@ const ProductUpdate = () => {
                 <h2>{name}</h2>
                 <h4>{price}</h4>
                 <h4>{quantity}</h4>
+                <button
+                  onClick={() => handleRemoveOne(_id)}
+                  className="px-4 py-2 bg-red-500 rounded text-white"
+                >
+                  Buy One
+                </button>
               </div>
             </div>
           </div>
