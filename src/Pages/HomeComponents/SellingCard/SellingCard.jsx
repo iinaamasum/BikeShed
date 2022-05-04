@@ -1,11 +1,24 @@
-import React from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SellingCard = (props) => {
-  const { img, name, price, quantity, sup_name, des } = props.product;
+  const { img, name, price, quantity, sup_name, des, id } = props.product;
+  useEffect(() => {
+    AOS.init();
+    AOS.refresh();
+  }, []);
+
+  const navigate = useNavigate();
   return (
     <>
       <div>
-        <div style={{ height: '500px' }} className="rounded relative shadow-sm">
+        <div
+          data-aos="fade-up"
+          style={{ height: '500px' }}
+          className="rounded relative shadow-sm"
+        >
           <img
             className="h-60 rounded w-full object-cover object-center mb-6"
             src="https://dummyimage.com/722x402"
@@ -25,7 +38,10 @@ const SellingCard = (props) => {
               <p>Price: {price}</p>
               <p>Items Left: {quantity}</p>
             </div>
-            <button className="w-full text-center bg-blue-600 py-2 rounded text-white font-bold hover:bg-blue-800">
+            <button
+              onClick={() => navigate(`/productUpdate/${id}`)}
+              className="w-full text-center bg-blue-600 py-2 rounded text-white font-bold hover:bg-blue-800"
+            >
               Update This Product
             </button>
           </div>

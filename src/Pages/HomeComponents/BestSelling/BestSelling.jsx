@@ -1,4 +1,5 @@
 import React from 'react';
+import { BiRightArrow } from 'react-icons/bi';
 import useProducts from '../../../hooks/useProducts';
 import SellingCard from '../SellingCard/SellingCard';
 
@@ -34,6 +35,12 @@ const BestSelling = () => {
         {products.slice(0, 6).map((product) => (
           <SellingCard key={product.id} product={product} />
         ))}
+      </div>
+      <div className="flex justify-center">
+        <button className="px-10 py-2 bg-orange-500 rounded my-5 text-slate-900 font-semibold tracking-wide flex justify-center items-center hover:bg-orange-600 hover:text-white transition-all duration-200 ">
+          See All Collections
+          <BiRightArrow className="ml-2 text-xl" />
+        </button>
       </div>
     </div>
   );
