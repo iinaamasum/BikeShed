@@ -1,15 +1,33 @@
+import axios from 'axios';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 import Navbar from '../../Shared/Navbar/Navbar';
 
 const AddItems = () => {
-  const { register, handleSubmit, errors } = useForm(); // initialize the hook
+  const [user] = useAuthState(auth);
+  const { register, handleSubmit, errors, reset } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    const url = 'http://localhost:5000/item';
+    axios
+      .post(url, {
+        ...data,
+        email: user.email,
+        sup_name: user.displayName,
+      })
+      .then((res) => {
+        if (res.data.acknowledged) {
+          toast('Item Added Successfully...');
+          reset();
+        }
+      });
   };
   return (
     <>
       <Navbar />
+      {errors && toast(errors)}
       <div style={{ maxWidth: '1300px' }} className="container mx-auto px-4">
         <div className="bg-slate-200 my-10 lg:my16 w-full md:w-2/3 lg:w-1/2 mx-auto px-10 md:px-20 pt-5 pb-10 rounded">
           <h2 className="text-center font-bold text-2xl md:text-3xl text-purple-700 mb-2">
@@ -22,6 +40,30 @@ const AddItems = () => {
           </h5>
           <form onSubmit={handleSubmit(onSubmit)} className="">
             <div>
+              <label className="text-sm font-medium mt-1" htmlFor="sup_name">
+                Supplier Name
+              </label>
+              <br />
+              <input
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-500 text-semibold py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                readOnly
+                disabled
+                value={user.displayName}
+              />
+            </div>
+            <div>
+              <label className="text-sm font-medium mt-1" htmlFor="sup_name">
+                Supplier Name
+              </label>
+              <br />
+              <input
+                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-500 text-semibold py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                readOnly
+                disabled
+                value={user.email}
+              />
+            </div>
+            <div>
               <label className="text-sm font-medium mt-1" htmlFor="name">
                 Product Name
               </label>
@@ -32,19 +74,7 @@ const AddItems = () => {
                 {...register('name', { required: true, maxLength: 20 })}
               />
             </div>
-            <div>
-              <label className="text-sm font-medium mt-1" htmlFor="sup_name">
-                Supplier Name
-              </label>
-              <br />
-              <input
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                placeholder="Supplier Name"
-                {...register('sup_name', {
-                  required: true,
-                })}
-              />
-            </div>
+
             <div>
               <label className="text-sm font-medium mt-1" htmlFor="des">
                 Description

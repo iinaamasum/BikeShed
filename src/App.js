@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import './App.css';
 import AllProducts from './Pages/AllProducts/AllProducts';
 import LogIn from './Pages/Auth/LogIn/LogIn';
@@ -55,6 +56,7 @@ function App() {
 
         <Route path="/*" element={<Error404 />} />
       </Routes>
+      <ToastContainer />
       <Footer />
     </>
   );
