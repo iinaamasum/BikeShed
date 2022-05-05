@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useSingleProduct from '../../hooks/useSingleProduct';
 import userImg from '../../images/image/user.png';
 import Navbar from '../Shared/Navbar/Navbar';
@@ -8,11 +10,36 @@ const ProductUpdate = () => {
   const { productId } = useParams();
   const [product, setProduct] = useSingleProduct(productId);
   const { _id, name, img, des, price, quantity, sup_name } = product;
+  const handleAddTen = (id) => {
+    const url = `http://localhost:5000/product/${id}`;
+    product.quantity += 10;
+    toast('Waiting for server confirmation for adding ten items.');
+    // updating by axios:)))
+    axios
+      .put(url, {
+        quantity: product.quantity,
+      })
+      .then((res) => {
+        setProduct(product);
+        toast.success('Ten Items Added Successfully!!!', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      });
+  };
   const handleRemoveOne = (id) => {
     // const q = product.quantity - 1;
     product.quantity -= 1;
+    toast('Waiting for server confirmation for removing item.');
     // console.log(product.quantity);
     const url = `http://localhost:5000/product/${id}`;
+
+    // updating by fetch :))))
     fetch(url, {
       method: 'PUT',
       body: JSON.stringify({
@@ -25,7 +52,15 @@ const ProductUpdate = () => {
       .then((res) => res.json())
       .then((data) => {
         setProduct(product);
-        // console.log(product);
+        toast.error('One item Removed!!!', {
+          position: 'top-right',
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       });
   };
   return (
@@ -61,9 +96,15 @@ const ProductUpdate = () => {
                 <h4>{quantity}</h4>
                 <button
                   onClick={() => handleRemoveOne(_id)}
-                  className="px-4 py-2 bg-red-500 rounded text-white"
+                  className="px-4 py-2 bg-red-500 rounded text-white mr-2"
                 >
                   Buy One
+                </button>
+                <button
+                  onClick={() => handleAddTen(_id)}
+                  className="px-4 py-2 bg-green-600 rounded text-white"
+                >
+                  Add Ten Items
                 </button>
               </div>
             </div>

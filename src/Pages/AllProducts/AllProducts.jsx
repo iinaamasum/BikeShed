@@ -8,7 +8,10 @@ const AllProducts = () => {
   return (
     <div>
       <Navbar />
-      <div style={{ maxWidth: '1300px' }} className="container px-4 mx-auto">
+      <div
+        style={{ maxWidth: '1300px', minHeight: '50vh' }}
+        className="container px-4 mx-auto"
+      >
         <h2 className="text-4xl text-center text-rose-500 my-5 lg:my-10 font-bold">
           Available Products for Whole Sell
         </h2>

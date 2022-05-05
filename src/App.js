@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
@@ -57,6 +58,7 @@ function App() {
         <Route path="/*" element={<Error404 />} />
       </Routes>
       <ToastContainer />
+      <Toaster />
       <Footer />
     </>
   );

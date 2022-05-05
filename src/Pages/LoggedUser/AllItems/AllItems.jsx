@@ -18,9 +18,12 @@ const AllItems = () => {
   return (
     <div>
       <Navbar />
-      <div style={{ maxWidth: '1300px' }} className="container px-4 mx-auto">
+      <div
+        style={{ maxWidth: '1300px', minHeight: '50vh' }}
+        className="container px-4 mx-auto"
+      >
         <h2 className="text-4xl text-center text-purple-500 my-5 lg:my-10 font-bold">
-          Product of the user{': '}
+          Products of the user{': '}
           <span className="text-red-600">{user.displayName}</span>
         </h2>
         <div className="flex flex-col mb-10">
@@ -68,7 +71,7 @@ const AllItems = () => {
                       </th>
                     </tr>
                   </thead>
-                  {items.map((item) => (
+                  {items?.map((item) => (
                     <ProductsTable key={item._id} product={item} />
                   ))}
                 </table>
