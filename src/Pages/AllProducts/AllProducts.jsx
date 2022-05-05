@@ -1,10 +1,35 @@
 import React from 'react';
-import useProducts from '../../hooks/useProducts';
-import ProductsTable from '../ProductsTable/ProductsTable';
+import { MdOutlinePublishedWithChanges } from 'react-icons/md';
+import { RiDeleteBin2Fill } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import useProducts from '../../hooks/useProducts.js';
 import Navbar from '../Shared/Navbar/Navbar';
 
 const AllProducts = () => {
-  const [products] = useProducts();
+  const [products, setProducts] = useProducts([]);
+  const navigate = useNavigate();
+
+  const handleDelete = (id) => {
+    const url = `http://localhost:5000/product/${id}`;
+    const confirm = window.confirm('Are you sure to delete the item');
+
+    if (confirm === false) {
+      return toast.error('Canceled by you');
+    }
+
+    fetch(url, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          const left = products.filter((product) => product._id !== id);
+          setProducts(left);
+        }
+      });
+  };
+
   return (
     <div>
       <Navbar />
@@ -61,7 +86,45 @@ const AllProducts = () => {
                     </tr>
                   </thead>
                   {products.slice(0, 6).map((product) => (
-                    <ProductsTable key={product._id} product={product} />
+                    <tbody key={product._id}>
+                      <tr className="border-b">
+                        <td className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-900">
+                          <img
+                            className="h-20 w-20 rounded-full"
+                            src={product.img}
+                            alt=""
+                          />
+                        </td>
+                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                          {product.name}
+                        </td>
+                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                          {product.sup_name}
+                        </td>
+                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                          {product.price}
+                        </td>
+                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                          {product.quantity}
+                        </td>
+                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                          <div className="flex">
+                            <MdOutlinePublishedWithChanges
+                              onClick={() =>
+                                navigate(`/productUpdate/${product._id}`)
+                              }
+                              size={30}
+                              className="mr-2 cursor-pointer text-green-600"
+                            />
+                            <RiDeleteBin2Fill
+                              onClick={() => handleDelete(product._id)}
+                              size={30}
+                              className="cursor-pointer text-red-600"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
                   ))}
                 </table>
               </div>

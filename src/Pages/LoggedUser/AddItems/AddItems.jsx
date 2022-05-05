@@ -48,7 +48,7 @@ const AddItems = () => {
                 className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-500 text-semibold py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                 readOnly
                 disabled
-                value={user.displayName}
+                value={user?.displayName ? user.displayName : 'Name Not Set'}
               />
             </div>
             <div>

@@ -2,16 +2,16 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import userImg from '../../images/image/user.png';
-import Navbar from '../Shared/Navbar/Navbar';
+import userImg from '../../../images/image/user.png';
+import Navbar from '../../Shared/Navbar/Navbar';
 
-const ProductUpdate = () => {
-  const { productId } = useParams();
+const UpdateUserItem = () => {
+  const { itemId } = useParams();
   const [product, setProduct] = useState({});
   const { _id, name, img, des, price, quantity, sup_name } = product;
 
   useEffect(() => {
-    const url = `http://localhost:5000/product/${productId}`;
+    const url = `http://localhost:5000/item/${itemId}`;
 
     fetch(url)
       .then((res) => res.json())
@@ -19,9 +19,8 @@ const ProductUpdate = () => {
   }, []);
 
   const handleAddTen = (id) => {
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `http://localhost:5000/item/${id}`;
     const q = product.quantity + 10;
-    // updating by axios:)))
     axios
       .put(url, {
         quantity: q,
@@ -41,20 +40,14 @@ const ProductUpdate = () => {
   };
   const handleRemoveOne = (id) => {
     const q = product.quantity - 1;
-    const url = `http://localhost:5000/product/${id}`;
+    toast('Waiting for server confirmation for removing item.');
 
-    // updating by fetch :))))
-    fetch(url, {
-      method: 'PUT',
-      body: JSON.stringify({
+    const url = `http://localhost:5000/item/${id}`;
+    axios
+      .put(url, {
         quantity: q,
-      }),
-      headers: {
-        'Content-type': 'application/json',
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => {
+      })
+      .then((res) => {
         setProduct({ ...product, quantity: q });
         toast.error('One item Removed!!!', {
           position: 'top-right',
@@ -119,4 +112,4 @@ const ProductUpdate = () => {
   );
 };
 
-export default ProductUpdate;
+export default UpdateUserItem;

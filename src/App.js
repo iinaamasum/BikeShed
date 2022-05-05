@@ -11,6 +11,7 @@ import Home from './Pages/HomeComponents/Home/Home';
 import AddItems from './Pages/LoggedUser/AddItems/AddItems';
 import AllItems from './Pages/LoggedUser/AllItems/AllItems';
 import ManageItems from './Pages/LoggedUser/ManageItems/ManageItems';
+import UpdateUserItem from './Pages/LoggedUser/UpdateUserItem/UpdateUserItem';
 import ProductUpdate from './Pages/ProductUpdate/ProductUpdate';
 import Footer from './Pages/Shared/Footer/Footer';
 
@@ -27,6 +28,14 @@ function App() {
           element={
             <RequireAuth>
               <ProductUpdate />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/item/:itemId"
+          element={
+            <RequireAuth>
+              <UpdateUserItem />
             </RequireAuth>
           }
         />

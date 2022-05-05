@@ -1,19 +1,40 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { MdOutlinePublishedWithChanges } from 'react-icons/md';
+import { RiDeleteBin2Fill } from 'react-icons/ri';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import ProductsTable from '../../ProductsTable/ProductsTable';
 import Navbar from '../../Shared/Navbar/Navbar';
 
 const AllItems = () => {
   const [user] = useAuthState(auth);
   const [items, setItems] = useState([]);
+  // const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
+
   useEffect(() => {
     const url = `http://localhost:5000/items?email=${user.email}`;
     axios.get(url).then((res) => {
       setItems(res.data);
     });
-  }, [user, items]);
+  }, []);
+
+  const handleDelete = (id) => {
+    const url = `http://localhost:5000/item/${id}`;
+
+    fetch(url, {
+      method: 'DELETE',
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.deletedCount > 0) {
+          const left = items.filter((item) => item._id !== id);
+          setItems(left);
+          // console.log(data);
+        }
+      });
+  };
 
   return (
     <div>
@@ -72,7 +93,43 @@ const AllItems = () => {
                     </tr>
                   </thead>
                   {items?.map((item) => (
-                    <ProductsTable key={item._id} product={item} />
+                    <tbody key={item._id}>
+                      <tr className="border-b">
+                        <td className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-900">
+                          <img
+                            className="h-20 w-20 rounded-full"
+                            src={item.img}
+                            alt=""
+                          />
+                        </td>
+                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                          {item.name}
+                        </td>
+                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                          {item.sup_name}
+                        </td>
+                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                          {item.price}
+                        </td>
+                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                          {item.quantity}
+                        </td>
+                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                          <div className="flex">
+                            <MdOutlinePublishedWithChanges
+                              onClick={() => navigate(`/item/${item._id}`)}
+                              size={30}
+                              className="mr-2 cursor-pointer text-green-600"
+                            />
+                            <RiDeleteBin2Fill
+                              onClick={() => handleDelete(item._id)}
+                              size={30}
+                              className="cursor-pointer text-red-600"
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
                   ))}
                 </table>
               </div>
