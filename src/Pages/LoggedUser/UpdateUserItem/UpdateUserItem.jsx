@@ -18,6 +18,8 @@ const UpdateUserItem = () => {
       .then((data) => setProduct(data));
   }, []);
 
+  // console.log(_id);
+
   const handleAddTen = (id) => {
     const url = `http://localhost:5000/item/${id}`;
     const q = product.quantity + 10;

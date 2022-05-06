@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import userImg from '../../images/image/user.png';
 import Navbar from '../Shared/Navbar/Navbar';
+import './ProductUpdate.css';
 
 const ProductUpdate = () => {
   const { productId } = useParams();
@@ -18,9 +19,17 @@ const ProductUpdate = () => {
       .then((data) => setProduct(data));
   }, []);
 
-  const handleAddTen = (id) => {
+  const handleSubmit = (id, e) => {
+    e.preventDefault();
+    // console.log(e.target.updateamount.value);
+    let add = parseInt(e.target.updateamount.value);
+    if (isNaN(add)) {
+      add = 0;
+    }
+
     const url = `http://localhost:5000/product/${id}`;
-    const q = product.quantity + 10;
+    const q = parseInt(product.quantity) + add;
+
     // updating by axios:)))
     axios
       .put(url, {
@@ -28,7 +37,7 @@ const ProductUpdate = () => {
       })
       .then((res) => {
         setProduct({ ...product, quantity: q });
-        toast.success('Ten Items Added Successfully!!!', {
+        toast.success(`Quantity increased: ${add} Successfully!!!`, {
           position: 'top-right',
           autoClose: 5000,
           hideProgressBar: false,
@@ -39,7 +48,7 @@ const ProductUpdate = () => {
         });
       });
   };
-  const handleRemoveOne = (id) => {
+  const handleRemoveOne = (id, e) => {
     const q = product.quantity - 1;
     const url = `http://localhost:5000/product/${id}`;
 
@@ -82,7 +91,7 @@ const ProductUpdate = () => {
               />
             </div>
             <div className="flex flex-col sm:flex-row mt-10">
-              <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
+              <div className="sm:w-1/2 text-center sm:pr-8 sm:py-8">
                 <div className="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
                   <img src={userImg} alt="" />
                 </div>
@@ -94,22 +103,38 @@ const ProductUpdate = () => {
                   <p className="text-base">{des}</p>
                 </div>
               </div>
-              <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                <h2>{name}</h2>
-                <h4>{price}</h4>
-                <h4>{quantity}</h4>
+              <div className="sm:w-1/2 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+                <h2 className="text-center text-purple-700 text-2xl md:text-4xl font-bold my-4">
+                  Product: {name}
+                </h2>
+                <div className="flex text-md text-red-600 font-semibold justify-between items-center">
+                  <h4>Price: {price}</h4>
+                  <h4>Quantity: {quantity}</h4>
+                </div>
                 <button
                   onClick={() => handleRemoveOne(_id)}
-                  className="px-4 py-2 bg-red-500 rounded text-white mr-2"
+                  className="w-full px-4 py-2 mt-2 bg-red-500 rounded text-white"
                 >
-                  Buy One
+                  Remove One
                 </button>
-                <button
-                  onClick={() => handleAddTen(_id)}
-                  className="px-4 py-2 bg-green-600 rounded text-white"
+                <form
+                  onSubmit={(e) => {
+                    handleSubmit(_id, e);
+                  }}
+                  className="mt-3 flex w-full items-center justify-center"
                 >
-                  Add Ten Items
-                </button>
+                  <input
+                    name="updateamount"
+                    className="w-full bg-white rounded-l border border-gray-300 focus:border-indigo-500 outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    placeholder="Enter the amount..."
+                    type="number"
+                  />
+                  <input
+                    type="submit"
+                    value="Add Items"
+                    className="px-4 py-2 bg-green-600 rounded-r text-white cursor-pointer border-y-2 border-green-600 mx-auto"
+                  />
+                </form>
               </div>
             </div>
           </div>

@@ -1,4 +1,6 @@
 import React from 'react';
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { MdOutlinePublishedWithChanges } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
@@ -10,13 +12,72 @@ const AllProducts = () => {
   const [products, setProducts] = useProducts([]);
   const navigate = useNavigate();
 
+  //custom confirm alert
+  const options = {
+    title: 'Title',
+    message: 'Message',
+    buttons: [
+      {
+        label: 'Yes',
+        onClick: () => alert('Click Yes'),
+      },
+      {
+        label: 'No',
+        onClick: () => alert('Click No'),
+      },
+    ],
+    childrenElement: () => <div />,
+    customUI: ({ onClose }) => {
+      return (
+        <div className="custom-ui">
+          <h1 className="">Are you sure?</h1>
+          <p>You want to delete this file?</p>
+          <button onClick={onClose}>No</button>
+          <button
+            onClick={() => {
+              this.handleClickDelete();
+              onClose();
+            }}
+          >
+            Yes, Delete it!
+          </button>
+        </div>
+      );
+    },
+    closeOnEscape: true,
+    closeOnClickOutside: true,
+    keyCodeForClose: [8, 32],
+    willUnmount: () => {},
+    afterClose: () => {},
+    onClickOutside: () => {},
+    onKeypressEscape: () => {},
+    overlayClassName: 'overlay-custom-class-name',
+  };
+
+  confirmAlert(options);
+
   const handleDelete = (id) => {
     const url = `http://localhost:5000/product/${id}`;
     const confirm = window.confirm('Are you sure to delete the item');
 
-    if (confirm === false) {
-      return toast.error('Canceled by you');
-    }
+    confirmAlert({
+      title: 'Confirm to submit',
+      message: 'Are you sure to do this.',
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => alert('Click Yes'),
+        },
+        {
+          label: 'No',
+          onClick: () => alert('Click No'),
+        },
+      ],
+    });
+
+    // if (confirm === false) {
+    //   return toast.error('Canceled by you');
+    // }
 
     fetch(url, {
       method: 'DELETE',
@@ -26,6 +87,7 @@ const AllProducts = () => {
         if (data.deletedCount > 0) {
           const left = products.filter((product) => product._id !== id);
           setProducts(left);
+          toast.success('Deleted the item successfully...');
         }
       });
   };
