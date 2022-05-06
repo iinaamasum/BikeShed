@@ -12,72 +12,31 @@ const AllProducts = () => {
   const [products, setProducts] = useProducts([]);
   const navigate = useNavigate();
 
-  //custom confirm alert
-  const options = {
-    title: 'Title',
-    message: 'Message',
-    buttons: [
-      {
-        label: 'Yes',
-        onClick: () => alert('Click Yes'),
-      },
-      {
-        label: 'No',
-        onClick: () => alert('Click No'),
-      },
-    ],
-    childrenElement: () => <div />,
-    customUI: ({ onClose }) => {
-      return (
-        <div className="custom-ui">
-          <h1 className="">Are you sure?</h1>
-          <p>You want to delete this file?</p>
-          <button onClick={onClose}>No</button>
-          <button
-            onClick={() => {
-              this.handleClickDelete();
-              onClose();
-            }}
-          >
-            Yes, Delete it!
-          </button>
-        </div>
-      );
-    },
-    closeOnEscape: true,
-    closeOnClickOutside: true,
-    keyCodeForClose: [8, 32],
-    willUnmount: () => {},
-    afterClose: () => {},
-    onClickOutside: () => {},
-    onKeypressEscape: () => {},
-    overlayClassName: 'overlay-custom-class-name',
-  };
-
-  confirmAlert(options);
-
-  const handleDelete = (id) => {
-    const url = `http://localhost:5000/product/${id}`;
-    const confirm = window.confirm('Are you sure to delete the item');
-
+  const deletion = (id) => {
     confirmAlert({
-      title: 'Confirm to submit',
-      message: 'Are you sure to do this.',
+      title: (
+        <span className="text-3xl text-semibold text-red-600">
+          Confirm Deletion
+        </span>
+      ),
+      message: (
+        <span className="text-md">Are you sure to delete the item?</span>
+      ),
       buttons: [
         {
-          label: 'Yes',
-          onClick: () => alert('Click Yes'),
+          label: <span className="mr-2 w-1/2">No</span>,
+          onClick: () => toast.error('Canceled by you'),
         },
         {
-          label: 'No',
-          onClick: () => alert('Click No'),
+          label: <span className=" w-1/2">Yes, Delete it!</span>,
+          onClick: () => handleDelete(id),
         },
       ],
     });
+  };
 
-    // if (confirm === false) {
-    //   return toast.error('Canceled by you');
-    // }
+  const handleDelete = (id) => {
+    const url = `http://localhost:5000/product/${id}`;
 
     fetch(url, {
       method: 'DELETE',
@@ -179,7 +138,7 @@ const AllProducts = () => {
                               className="mr-2 cursor-pointer text-green-600"
                             />
                             <RiDeleteBin2Fill
-                              onClick={() => handleDelete(product._id)}
+                              onClick={() => deletion(product._id)}
                               size={30}
                               className="cursor-pointer text-red-600"
                             />

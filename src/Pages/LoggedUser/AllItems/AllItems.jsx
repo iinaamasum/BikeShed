@@ -1,9 +1,11 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { confirmAlert } from 'react-confirm-alert';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { MdOutlinePublishedWithChanges } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Navbar from '../../Shared/Navbar/Navbar';
 
@@ -20,6 +22,29 @@ const AllItems = () => {
     });
   }, []);
 
+  const deletion = (id) => {
+    confirmAlert({
+      title: (
+        <span className="text-3xl text-semibold text-red-600">
+          Confirm Deletion
+        </span>
+      ),
+      message: (
+        <span className="text-md">Are you sure to delete the item?</span>
+      ),
+      buttons: [
+        {
+          label: <span className="mr-2 w-1/2">No</span>,
+          onClick: () => toast.error('Canceled by you'),
+        },
+        {
+          label: <span className=" w-1/2">Yes, Delete it!</span>,
+          onClick: () => handleDelete(id),
+        },
+      ],
+    });
+  };
+
   const handleDelete = (id) => {
     const url = `http://localhost:5000/item/${id}`;
 
@@ -31,6 +56,7 @@ const AllItems = () => {
         if (data.deletedCount > 0) {
           const left = items.filter((item) => item._id !== id);
           setItems(left);
+          toast.success('Deleted the item successfully...');
           // console.log(data);
         }
       });
@@ -122,7 +148,7 @@ const AllItems = () => {
                               className="mr-2 cursor-pointer text-green-600"
                             />
                             <RiDeleteBin2Fill
-                              onClick={() => handleDelete(item._id)}
+                              onClick={() => deletion(item._id)}
                               size={30}
                               className="cursor-pointer text-red-600"
                             />
