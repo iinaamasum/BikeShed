@@ -90,7 +90,7 @@ const SignUp = () => {
 
       // console.log(user);
       if (
-        user?.emailVerified &&
+        user?.emailVerified ||
         user?.reloadUserInfo?.providerUserInfo[0]?.providerId !== 'password'
       ) {
         navigate(from, { replace: true });

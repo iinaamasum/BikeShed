@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { CgClose } from 'react-icons/cg';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import userImg from '../../../images/image/user.png';
 import logo from '../../../images/logo/logo.png';
@@ -105,7 +106,11 @@ const Navbar = () => {
                     </>
                   )}
                   <button
-                    onClick={() => signOut(auth)}
+                    onClick={() => {
+                      signOut(auth);
+                      navigate('/');
+                      toast.success('Successfully logged out');
+                    }}
                     className="text-black my-2 lg:my-0 font-sans tracking-wider font-semibold text-md mr-3 hover:bg-gray-100 px-5 py-1 rounded-full hover:text-red-700 shadow hover:shadow outline-none focus:outline-none  mb-1 ease-linear transition-all duration-150 lg:w-auto"
                     type="button"
                   >
