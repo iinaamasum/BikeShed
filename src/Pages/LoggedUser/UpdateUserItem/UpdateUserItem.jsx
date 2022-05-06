@@ -1,7 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../../firebase.init';
 import userImg from '../../../images/image/user.png';
 import Navbar from '../../Shared/Navbar/Navbar';
 
@@ -9,6 +11,7 @@ const UpdateUserItem = () => {
   const { itemId } = useParams();
   const [product, setProduct] = useState({});
   const { _id, name, img, des, price, quantity, sup_name } = product;
+  const [user] = useAuthState(auth);
 
   const navigate = useNavigate();
 
@@ -93,7 +96,15 @@ const UpdateUserItem = () => {
             <div className="flex flex-col sm:flex-row mt-10">
               <div className="sm:w-1/2 text-center sm:pr-8 sm:py-8">
                 <div className="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-                  <img src={userImg} alt="" />
+                  <img
+                    className="w-20 h-20 rounded-full"
+                    src={
+                      user?.reloadUserInfo?.photoUrl
+                        ? user?.reloadUserInfo?.photoUrl
+                        : userImg
+                    }
+                    alt=""
+                  />
                 </div>
                 <div className="flex flex-col items-center text-center justify-center">
                   <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">

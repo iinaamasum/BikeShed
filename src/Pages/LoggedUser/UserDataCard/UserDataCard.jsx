@@ -42,7 +42,7 @@ const UserDataCard = (props) => {
               onClick={() => navigate(`/item/${_id}`)}
               className="w-full text-center bg-blue-600 py-2 rounded text-white font-bold hover:bg-blue-800"
             >
-              Update This Product
+              Update The Item
             </button>
           </div>
         </div>
