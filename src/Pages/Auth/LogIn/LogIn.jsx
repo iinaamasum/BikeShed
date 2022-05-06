@@ -66,19 +66,23 @@ const LogIn = () => {
         userData.email
       );
       localStorage.setItem('token', data.token);
-      console.log(data);
+    }
+    e.target.reset();
+  };
+
+  useEffect(() => {
+    if (user) {
       toast.success(`Welcome ${user.displayName}`);
       navigate(from, { replace: true });
     }
-  };
+  }, [user]);
 
-  console.log(user);
+  // console.log(user);
 
   useEffect(() => {
-    const error = errorLogin;
-    if (error) {
-      if (error.message.includes('auth/invalid-password')) {
-        toast('Wrong password. Intruder!!');
+    if (errorLogin) {
+      if (errorLogin.message.includes('auth/wrong-password')) {
+        toast.warn('Wrong password');
       }
     }
   }, [errorLogin]);
