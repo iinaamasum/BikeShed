@@ -20,7 +20,7 @@ const SignUp = () => {
     email: '',
     pass: '',
     confirmPass: '',
-    name: 'Name Not Set Yet',
+    name: '',
   });
   const [errors, setErrors] = useState({
     emailError: '',
@@ -67,7 +67,7 @@ const SignUp = () => {
       setUserData({ ...userData, name: e.target.value });
       setErrors({ ...errors, nameError: '' });
     } else {
-      setUserData({ ...userData, name: 'Name Not Set Yet' });
+      setUserData({ ...userData, name: '' });
       setErrors({
         ...errors,
         nameError: 'Invalid Name Format. Only letters are allowed',
@@ -78,6 +78,8 @@ const SignUp = () => {
     e.preventDefault();
     if (userData.pass === userData.confirmPass) {
       createUserWithEmailAndPassword(userData.email, userData.pass);
+    } else {
+      toast.error('Password does not match');
     }
   };
 
@@ -85,7 +87,7 @@ const SignUp = () => {
     if (user) {
       user.displayName = userData?.name ? userData.name : user.displayName;
       toast.success(
-        `Congratulations ${user.displayName}Account Created Successfully`
+        `Congratulations ${user.displayName}. Account Created Successfully.`
       );
 
       // console.log(user);
@@ -135,14 +137,13 @@ const SignUp = () => {
                 <div className="border-b-2 border-red-600 w-1/3"></div>
               </div>
             </div>
-            <form className="w-full" onSubmit={(e) => handleSubmit(e)}>
+            <form className="w-full" onSubmit={handleSubmit}>
               <div className="relative mb-4">
                 <label
                   htmlFor="full-name"
                   className="leading-7 text-sm text-gray-600"
                 >
-                  Full Name{' '}
-                  <span className="text-sm text-gray-500">(optional)</span>
+                  Full Name
                 </label>
                 <input
                   onChange={handleName}
@@ -151,6 +152,7 @@ const SignUp = () => {
                   name="full-name"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   placeholder="Your Name"
+                  required
                 />
                 <p className="text-sm text-red-600 font-medium">
                   {errors?.nameError ? errors.nameError : ''}
@@ -169,6 +171,7 @@ const SignUp = () => {
                   name="email"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   placeholder="Your Email"
+                  required
                 />
                 <p className="text-sm text-red-600 font-medium">
                   {errors?.emailError ? errors.emailError : ''}
@@ -187,6 +190,7 @@ const SignUp = () => {
                   name="password"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   placeholder="Password"
+                  required
                 />
                 <p className="text-sm text-red-600 font-medium">
                   {errors?.passError ? errors.passError : ''}
@@ -205,6 +209,7 @@ const SignUp = () => {
                   name="confirm-password"
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   placeholder="Confirm Password"
+                  required
                 />
                 <p className="text-sm text-red-600 font-medium">
                   {errors?.confirmPassError ? errors.confirmPassError : ''}

@@ -94,11 +94,7 @@ const Navbar = () => {
                   ) : (
                     <>
                       <img
-                        title={
-                          user?.displayName
-                            ? user.displayName
-                            : 'Name Not Set Yet'
-                        }
+                        title={user?.displayName}
                         className="h-10 w-10 rounded-full mr-2 cursor-pointer"
                         src={userImg}
                         alt=""
