@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
 } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -16,6 +17,8 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, userInput, loadingInput, errorInput] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [user] = useAuthState(auth);
+  const [updateProfile, updating, error] = useUpdateProfile(auth);
+
   const [userData, setUserData] = useState({
     email: '',
     pass: '',
@@ -62,22 +65,26 @@ const SignUp = () => {
     }
   };
   const handleName = (e) => {
-    const regex = /^[a-zA-Z]+$/;
-    if (regex.test(e.target.value)) {
+    if (e.target.value) {
       setUserData({ ...userData, name: e.target.value });
       setErrors({ ...errors, nameError: '' });
     } else {
       setUserData({ ...userData, name: '' });
       setErrors({
         ...errors,
-        nameError: 'Invalid Name Format. Only letters are allowed',
+        nameError: 'Enter your name please.',
       });
     }
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
+    const displayName = userData.name;
     e.preventDefault();
     if (userData.pass === userData.confirmPass) {
-      createUserWithEmailAndPassword(userData.email, userData.pass);
+      await createUserWithEmailAndPassword(userData.email, userData.pass);
+      await updateProfile({ displayName });
+      toast.success(
+        `Congratulations ${user.displayName}. Account Created Successfully.`
+      );
     } else {
       toast.error('Password does not match');
     }
@@ -85,11 +92,6 @@ const SignUp = () => {
 
   useEffect(() => {
     if (user) {
-      user.displayName = userData?.name ? userData.name : user.displayName;
-      toast.success(
-        `Congratulations ${user.displayName}. Account Created Successfully.`
-      );
-
       // console.log(user);
       if (
         user?.emailVerified ||

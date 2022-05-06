@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {
   useAuthState,
@@ -52,23 +53,26 @@ const LogIn = () => {
       });
     }
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (userData.email === '') {
       setErrors({ ...errors, emailError: 'Email is required' });
     } else if (userData.pass === '') {
       setErrors({ ...errors, passError: 'Password is required' });
     } else {
-      signInWithEmailAndPassword(userData.email, userData.pass);
-    }
-  };
-
-  useEffect(() => {
-    if (user) {
+      await signInWithEmailAndPassword(userData.email, userData.pass);
+      const { data } = await axios.post(
+        'http://localhost:5000/login',
+        userData.email
+      );
+      localStorage.setItem('token', data.token);
+      console.log(data);
       toast.success(`Welcome ${user.displayName}`);
       navigate(from, { replace: true });
     }
-  }, [user]);
+  };
+
+  console.log(user);
 
   useEffect(() => {
     const error = errorLogin;
