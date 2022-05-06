@@ -4,6 +4,7 @@ import {
   useCreateUserWithEmailAndPassword,
 } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import AlternativeNavbar from '../../Shared/AlternativeNavbar/AlternativeNavbar';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -13,8 +14,8 @@ const SignUp = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
   const [createUserWithEmailAndPassword, userInput, loadingInput, errorInput] =
-    useCreateUserWithEmailAndPassword(auth);
-  const [user, loading, error] = useAuthState(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [user] = useAuthState(auth);
   const [userData, setUserData] = useState({
     email: '',
     pass: '',
@@ -82,15 +83,35 @@ const SignUp = () => {
 
   useEffect(() => {
     if (user) {
-      user.displayName = userData.name;
+      user.displayName = userData?.name ? userData.name : user.displayName;
+      toast.success(
+        `Congratulations ${user.displayName}Account Created Successfully`
+      );
       navigate(from, { replace: true });
     }
   }, [user]);
+
+  useEffect(() => {
+    const error = errorInput;
+    if (error) {
+      console.log(error);
+      if (error?.message.includes('auth/email-already-in-use')) {
+        toast('Invalid email provided, please provide a valid email');
+      } else if (error?.message.includes('auth/invalid-email')) {
+        toast('Invalid email provided, please provide a valid email');
+      } else if (error.message.includes('auth/invalid-password')) {
+        toast('Wrong password. Intruder!!');
+      } else {
+        toast('something went wrong');
+      }
+    }
+  }, [errorInput]);
+
   return (
     <div>
       <AlternativeNavbar />
       <div className="">
-        <form onSubmit={handleSubmit} className="w-full lg:w-1/2 mx-auto my-10">
+        <div onSubmit={handleSubmit} className="w-full lg:w-1/2 mx-auto my-10">
           <div className="bg-gray-100 rounded-lg px-3 sm:px-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 py-14">
             <h2 className="text-gray-900 text-2xl text-center font-medium title-font mb-3">
               Sign Up
@@ -108,105 +129,107 @@ const SignUp = () => {
                 <div className="border-b-2 border-red-600 w-1/3"></div>
               </div>
             </div>
-            <div className="relative mb-4">
-              <label
-                htmlFor="full-name"
-                className="leading-7 text-sm text-gray-600"
-              >
-                Full Name{' '}
-                <span className="text-sm text-gray-500">(optional)</span>
-              </label>
-              <input
-                onChange={handleName}
-                type="text"
-                id="full-name"
-                name="full-name"
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                placeholder="Your Name"
-              />
-              <p className="text-sm text-red-600 font-medium">
-                {errors?.nameError ? errors.nameError : ''}
+            <form className="w-full" onSubmit={handleSubmit}>
+              <div className="relative mb-4">
+                <label
+                  htmlFor="full-name"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  Full Name{' '}
+                  <span className="text-sm text-gray-500">(optional)</span>
+                </label>
+                <input
+                  onChange={handleName}
+                  type="text"
+                  id="full-name"
+                  name="full-name"
+                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="Your Name"
+                />
+                <p className="text-sm text-red-600 font-medium">
+                  {errors?.nameError ? errors.nameError : ''}
+                </p>
+              </div>
+              <div className="relative mb-4">
+                <label
+                  htmlFor="email"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  Email
+                </label>
+                <input
+                  onChange={handleEmail}
+                  type="email"
+                  name="email"
+                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="Your Email"
+                />
+                <p className="text-sm text-red-600 font-medium">
+                  {errors?.emailError ? errors.emailError : ''}
+                </p>
+              </div>
+              <div className="relative mb-4">
+                <label
+                  htmlFor="email"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  Password
+                </label>
+                <input
+                  onChange={handlePass}
+                  type="password"
+                  name="password"
+                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="Password"
+                />
+                <p className="text-sm text-red-600 font-medium">
+                  {errors?.passError ? errors.passError : ''}
+                </p>
+              </div>
+              <div className="relative mb-4">
+                <label
+                  htmlFor="confirm-password"
+                  className="leading-7 text-sm text-gray-600"
+                >
+                  Confirm Password
+                </label>
+                <input
+                  onChange={handleConfirmPass}
+                  type="password"
+                  name="confirm-password"
+                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  placeholder="Confirm Password"
+                />
+                <p className="text-sm text-red-600 font-medium">
+                  {errors?.confirmPassError ? errors.confirmPassError : ''}
+                </p>
+              </div>
+              <p className="">
+                Already have an account?{' '}
+                <Link
+                  className="text-blue-600 underline font-semibold"
+                  to="/login"
+                >
+                  login Now
+                </Link>
               </p>
-            </div>
-            <div className="relative mb-4">
-              <label
-                htmlFor="email"
-                className="leading-7 text-sm text-gray-600"
-              >
-                Email
-              </label>
-              <input
-                onChange={handleEmail}
-                type="email"
-                name="email"
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                placeholder="Your Email"
-              />
-              <p className="text-sm text-red-600 font-medium">
-                {errors?.emailError ? errors.emailError : ''}
+              <p>
+                Forgot Password?{' '}
+                <Link
+                  className="text-blue-600 underline font-semibold"
+                  to="/resetPass"
+                >
+                  Click here to reset
+                </Link>
               </p>
-            </div>
-            <div className="relative mb-4">
-              <label
-                htmlFor="email"
-                className="leading-7 text-sm text-gray-600"
-              >
-                Password
-              </label>
               <input
-                onChange={handlePass}
-                type="password"
-                name="password"
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                placeholder="Password"
+                type="submit"
+                value="SignUp"
+                className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg cursor-pointer mt-2 w-full"
               />
-              <p className="text-sm text-red-600 font-medium">
-                {errors?.passError ? errors.passError : ''}
-              </p>
-            </div>
-            <div className="relative mb-4">
-              <label
-                htmlFor="confirm-password"
-                className="leading-7 text-sm text-gray-600"
-              >
-                Confirm Password
-              </label>
-              <input
-                onChange={handleConfirmPass}
-                type="password"
-                name="confirm-password"
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                placeholder="Confirm Password"
-              />
-              <p className="text-sm text-red-600 font-medium">
-                {errors?.confirmPassError ? errors.confirmPassError : ''}
-              </p>
-            </div>
-            <p className="">
-              Already have an account?{' '}
-              <Link
-                className="text-blue-600 underline font-semibold"
-                to="/login"
-              >
-                login Now
-              </Link>
-            </p>
-            <p>
-              Forgot Password?{' '}
-              <Link
-                className="text-blue-600 underline font-semibold"
-                to="/resetPass"
-              >
-                Click here to reset
-              </Link>
-            </p>
-            <input
-              type="submit"
-              value="SignUp"
-              className="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg cursor-pointer mt-2"
-            />
+            </form>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

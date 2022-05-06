@@ -15,7 +15,7 @@ const AddItems = () => {
       .post(url, {
         ...data,
         email: user.email,
-        sup_name: user.displayName,
+        sup_name: user?.displayName ? user.displayName : 'Name Not Set Yet',
       })
       .then((res) => {
         if (res.data.acknowledged) {
