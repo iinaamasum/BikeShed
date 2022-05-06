@@ -7,6 +7,7 @@ import LogIn from './Pages/Auth/LogIn/LogIn';
 import RequireAuth from './Pages/Auth/RequireAuth/RequireAuth';
 import ResetPass from './Pages/Auth/ResetPass/ResetPass';
 import SignUp from './Pages/Auth/SignUp/SignUp';
+import VerifyEmail from './Pages/Auth/VerifyEmail/VerifyEmail';
 import Error404 from './Pages/Error404/Error404';
 import Home from './Pages/HomeComponents/Home/Home';
 import AddItems from './Pages/LoggedUser/AddItems/AddItems';
@@ -25,6 +26,7 @@ function App() {
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/resetPass" element={<ResetPass />} />
+        <Route path="/verifyemail" element={<VerifyEmail />} />
         <Route
           path="/productUpdate/:productId"
           element={

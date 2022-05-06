@@ -87,15 +87,24 @@ const SignUp = () => {
       toast.success(
         `Congratulations ${user.displayName}Account Created Successfully`
       );
-      toast.success('Email verification link sent to your email.');
-      navigate(from, { replace: true });
+
+      // console.log(user);
+      if (
+        user?.emailVerified &&
+        user?.reloadUserInfo?.providerUserInfo[0]?.providerId !== 'password'
+      ) {
+        navigate(from, { replace: true });
+      } else {
+        toast.success('Email verification link sent to your email.');
+        navigate('/verifyemail');
+      }
     }
   }, [user]);
 
   useEffect(() => {
     const error = errorInput;
     if (error) {
-      console.log(error);
+      // console.log(error);
       if (error?.message.includes('auth/email-already-in-use')) {
         toast.error('This email is linked with another account');
       } else if (error?.message.includes('auth/invalid-email')) {
@@ -208,15 +217,6 @@ const SignUp = () => {
                   to="/login"
                 >
                   login Now
-                </Link>
-              </p>
-              <p>
-                Forgot Password?{' '}
-                <Link
-                  className="text-blue-600 underline font-semibold"
-                  to="/resetPass"
-                >
-                  Click here to reset
                 </Link>
               </p>
               <input

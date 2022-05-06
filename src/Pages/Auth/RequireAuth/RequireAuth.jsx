@@ -21,6 +21,13 @@ const RequireAuth = ({ children }) => {
   if (error) {
     return toast('Error...');
   }
+  // console.log(user);
+  if (
+    user?.emailVerified === false &&
+    user?.reloadUserInfo?.providerUserInfo[0]?.providerId === 'password'
+  ) {
+    return <Navigate to="/verifyemail" state={{ from: location }} replace />;
+  }
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
