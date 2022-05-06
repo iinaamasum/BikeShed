@@ -5,6 +5,7 @@ import './App.css';
 import AllProducts from './Pages/AllProducts/AllProducts';
 import LogIn from './Pages/Auth/LogIn/LogIn';
 import RequireAuth from './Pages/Auth/RequireAuth/RequireAuth';
+import ResetPass from './Pages/Auth/ResetPass/ResetPass';
 import SignUp from './Pages/Auth/SignUp/SignUp';
 import Error404 from './Pages/Error404/Error404';
 import Home from './Pages/HomeComponents/Home/Home';
@@ -23,6 +24,7 @@ function App() {
         <Route path="/products" element={<AllProducts />} />
         <Route path="/login" element={<LogIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/resetPass" element={<ResetPass />} />
         <Route
           path="/productUpdate/:productId"
           element={

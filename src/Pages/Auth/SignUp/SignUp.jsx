@@ -20,7 +20,7 @@ const SignUp = () => {
     email: '',
     pass: '',
     confirmPass: '',
-    name: '',
+    name: 'Name Not Set Yet',
   });
   const [errors, setErrors] = useState({
     emailError: '',
@@ -67,7 +67,7 @@ const SignUp = () => {
       setUserData({ ...userData, name: e.target.value });
       setErrors({ ...errors, nameError: '' });
     } else {
-      setUserData({ ...userData, name: '' });
+      setUserData({ ...userData, name: 'Name Not Set Yet' });
       setErrors({
         ...errors,
         nameError: 'Invalid Name Format. Only letters are allowed',
@@ -87,6 +87,7 @@ const SignUp = () => {
       toast.success(
         `Congratulations ${user.displayName}Account Created Successfully`
       );
+      toast.success('Email verification link sent to your email.');
       navigate(from, { replace: true });
     }
   }, [user]);
@@ -96,13 +97,9 @@ const SignUp = () => {
     if (error) {
       console.log(error);
       if (error?.message.includes('auth/email-already-in-use')) {
-        toast('Invalid email provided, please provide a valid email');
+        toast.error('This email is linked with another account');
       } else if (error?.message.includes('auth/invalid-email')) {
-        toast('Invalid email provided, please provide a valid email');
-      } else if (error.message.includes('auth/invalid-password')) {
-        toast('Wrong password. Intruder!!');
-      } else {
-        toast('something went wrong');
+        toast.error('Email is invalid');
       }
     }
   }, [errorInput]);
@@ -111,7 +108,7 @@ const SignUp = () => {
     <div>
       <AlternativeNavbar />
       <div className="">
-        <div onSubmit={handleSubmit} className="w-full lg:w-1/2 mx-auto my-10">
+        <div className="w-full lg:w-1/2 mx-auto my-10">
           <div className="bg-gray-100 rounded-lg px-3 sm:px-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 py-14">
             <h2 className="text-gray-900 text-2xl text-center font-medium title-font mb-3">
               Sign Up
@@ -129,7 +126,7 @@ const SignUp = () => {
                 <div className="border-b-2 border-red-600 w-1/3"></div>
               </div>
             </div>
-            <form className="w-full" onSubmit={handleSubmit}>
+            <form className="w-full" onSubmit={(e) => handleSubmit(e)}>
               <div className="relative mb-4">
                 <label
                   htmlFor="full-name"

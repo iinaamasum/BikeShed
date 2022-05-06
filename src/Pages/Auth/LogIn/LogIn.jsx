@@ -13,9 +13,10 @@ const LogIn = () => {
   // redirect to desired or home page if user is logged in
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
+
   const [signInWithEmailAndPassword, userLogin, loadingLogin, errorLogin] =
     useSignInWithEmailAndPassword(auth);
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   const [userData, setUserData] = useState({
@@ -67,9 +68,16 @@ const LogIn = () => {
       toast.success(`Welcome ${user.displayName}`);
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [user]);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const error = errorLogin;
+    if (error) {
+      if (error.message.includes('auth/invalid-password')) {
+        toast('Wrong password. Intruder!!');
+      }
+    }
+  }, [errorLogin]);
   return (
     <div>
       <AlternativeNavbar />
@@ -110,6 +118,9 @@ const LogIn = () => {
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   placeholder="Your Email"
                 />
+                <p className="text-sm text-red-600 font-medium">
+                  {errors?.emailError ? errors.emailError : ''}
+                </p>
               </div>
               <div className="relative mb-4">
                 <label
@@ -125,6 +136,9 @@ const LogIn = () => {
                   className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   placeholder="Password"
                 />
+                <p className="text-sm text-red-600 font-medium">
+                  {errors?.passError ? errors.passError : ''}
+                </p>
               </div>
               <p className="">
                 Don't have an account?{' '}
