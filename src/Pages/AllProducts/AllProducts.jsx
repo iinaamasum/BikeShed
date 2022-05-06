@@ -106,7 +106,7 @@ const AllProducts = () => {
                       </th>
                     </tr>
                   </thead>
-                  {products.slice(0, 6).map((product) => (
+                  {products.map((product) => (
                     <tbody key={product._id}>
                       <tr className="border-b">
                         <td className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-900">

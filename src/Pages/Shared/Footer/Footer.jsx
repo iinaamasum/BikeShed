@@ -9,8 +9,8 @@ const Footer = () => {
   const navLinksOne = [
     { id: 1, name: 'Home', path: '/' },
     { id: 2, name: 'All Products', path: '/products' },
-    { id: 3, name: 'About', path: '/about' },
-    { id: 4, name: 'Contact', path: '/contact' },
+    { id: 3, name: 'Add Product', path: '//add-items' },
+    { id: 4, name: 'Blog', path: '/blog' },
   ];
   const navLinksTwo = [
     { id: 1, name: 'Manage Items', path: '/manage-items' },
