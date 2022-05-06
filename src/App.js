@@ -16,63 +16,67 @@ import ManageItems from './Pages/LoggedUser/ManageItems/ManageItems';
 import UpdateUserItem from './Pages/LoggedUser/UpdateUserItem/UpdateUserItem';
 import ProductUpdate from './Pages/ProductUpdate/ProductUpdate';
 import Footer from './Pages/Shared/Footer/Footer';
+import RouteToTop from './RouteToTop';
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/products" element={<AllProducts />} />
-        <Route path="/login" element={<LogIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/resetPass" element={<ResetPass />} />
-        <Route path="/verifyemail" element={<VerifyEmail />} />
-        <Route
-          path="/productUpdate/:productId"
-          element={
-            <RequireAuth>
-              <ProductUpdate />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/item/:itemId"
-          element={
-            <RequireAuth>
-              <UpdateUserItem />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/add-items"
-          element={
-            <RequireAuth>
-              <AddItems />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/manage-items"
-          element={
-            <RequireAuth>
-              <ManageItems />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path="/my-items"
-          element={
-            <RequireAuth>
-              <AllItems />
-            </RequireAuth>
-          }
-        />
+      <RouteToTop>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<AllProducts />} />
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/resetPass" element={<ResetPass />} />
+          <Route path="/verifyemail" element={<VerifyEmail />} />
+          <Route
+            path="/productUpdate/:productId"
+            element={
+              <RequireAuth>
+                <ProductUpdate />
+              </RequireAuth>
+            }
+          />
 
-        <Route path="/*" element={<Error404 />} />
-      </Routes>
-      <ToastContainer />
-      <Toaster />
-      <Footer />
+          <Route
+            path="/item/:itemId"
+            element={
+              <RequireAuth>
+                <UpdateUserItem />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/add-items"
+            element={
+              <RequireAuth>
+                <AddItems />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/manage-items"
+            element={
+              <RequireAuth>
+                <ManageItems />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/my-items"
+            element={
+              <RequireAuth>
+                <AllItems />
+              </RequireAuth>
+            }
+          />
+
+          <Route path="/*" element={<Error404 />} />
+        </Routes>
+        <ToastContainer />
+        <Toaster />
+        <Footer />
+      </RouteToTop>
     </>
   );
 }

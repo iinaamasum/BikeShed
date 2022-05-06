@@ -143,11 +143,13 @@ const AllItems = () => {
                         <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
                           <div className="flex">
                             <MdOutlinePublishedWithChanges
+                              title="Update The Product"
                               onClick={() => navigate(`/item/${item._id}`)}
                               size={30}
                               className="mr-2 cursor-pointer text-green-600"
                             />
                             <RiDeleteBin2Fill
+                              title="Delete The Product"
                               onClick={() => deletion(item._id)}
                               size={30}
                               className="cursor-pointer text-red-600"

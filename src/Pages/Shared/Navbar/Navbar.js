@@ -20,9 +20,9 @@ const Navbar = () => {
     { id: 4, name: 'Blog', path: '/blog' },
   ];
   const navLinksTwo = [
-    { id: 1, name: 'Manage Items', path: '/manage-items' },
+    { id: 1, name: 'My Items', path: '/my-items' },
     { id: 2, name: 'Add Items', path: '/add-items' },
-    { id: 3, name: 'My Items', path: '/my-items' },
+    { id: 3, name: 'Manage Items', path: '/manage-items' },
   ];
   return (
     <>

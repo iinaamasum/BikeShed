@@ -13,7 +13,7 @@ const RequireAuth = ({ children }) => {
     return (
       <>
         <div className="h-[100vh] flex items-center justify-center">
-          <img className="bg-white h-40" src={loadingImg} alt="" />
+          <img className="bg-white h-20" src={loadingImg} alt="" />
         </div>
       </>
     );

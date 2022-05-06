@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import userImg from '../../images/image/user.png';
 import Navbar from '../Shared/Navbar/Navbar';
 import './ProductUpdate.css';
 
 const ProductUpdate = () => {
+  const navigate = useNavigate();
   const { productId } = useParams();
   const [product, setProduct] = useState({});
   const { _id, name, img, des, price, quantity, sup_name } = product;
@@ -24,7 +25,7 @@ const ProductUpdate = () => {
     // console.log(e.target.updateamount.value);
     let add = parseInt(e.target.updateamount.value);
     if (isNaN(add)) {
-      add = 0;
+      return toast.error('Please enter the quantity to add');
     }
 
     const url = `http://localhost:5000/product/${id}`;
@@ -81,7 +82,7 @@ const ProductUpdate = () => {
       <Navbar />
 
       <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto flex flex-col">
+        <div className="container px-5 pt-10 mx-auto flex flex-col">
           <div className="lg:w-4/6 mx-auto">
             <div className="rounded-lg h-64 overflow-hidden">
               <img
@@ -108,7 +109,7 @@ const ProductUpdate = () => {
                   Product: {name}
                 </h2>
                 <div className="flex text-md text-red-600 font-semibold justify-between items-center">
-                  <h4>Price: {price}</h4>
+                  <h4>Price: ${price}</h4>
                   <h4>Quantity: {quantity}</h4>
                 </div>
                 <button
@@ -140,6 +141,14 @@ const ProductUpdate = () => {
           </div>
         </div>
       </section>
+      <div className="w-3/4 mx-auto md:w-1/3 block">
+        <button
+          onClick={() => navigate(`/products`)}
+          className="bg-purple-600 px-5 py-2 rounded text-white hover:bg-purple-800 font-semibold w-full mt-3 mb-10  transition-all duration-200 ease-in-out"
+        >
+          Manage Product
+        </button>
+      </div>
     </div>
   );
 };

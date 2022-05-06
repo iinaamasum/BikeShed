@@ -39,29 +39,31 @@ const AddItems = () => {
             form quickly.
           </h5>
           <form onSubmit={handleSubmit(onSubmit)} className="">
-            <div>
-              <label className="text-sm font-medium mt-1" htmlFor="sup_name">
-                Supplier Name
-              </label>
-              <br />
-              <input
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-500 text-semibold py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                readOnly
-                disabled
-                value={user?.displayName}
-              />
-            </div>
-            <div>
-              <label className="text-sm font-medium mt-1" htmlFor="sup_name">
-                Supplier Email
-              </label>
-              <br />
-              <input
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-500 text-semibold py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                readOnly
-                disabled
-                value={user.email}
-              />
+            <div className="flex items-center w-full">
+              <div className="w-1/2 mr-3">
+                <label className="text-sm font-medium mt-1" htmlFor="sup_name">
+                  Supplier Name(Can't change)
+                </label>
+                <br />
+                <input
+                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-red-600 font-medium text-semibold py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  readOnly
+                  disabled
+                  value={user?.displayName}
+                />
+              </div>
+              <div className="w-1/2">
+                <label className="text-sm font-medium mt-1" htmlFor="sup_name">
+                  Supplier Email(Can't change)
+                </label>
+                <br />
+                <input
+                  className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-red-600 font-medium text-semibold py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                  readOnly
+                  disabled
+                  value={user.email}
+                />
+              </div>
             </div>
             <div>
               <label className="text-sm font-medium mt-1" htmlFor="name">

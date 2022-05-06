@@ -3,7 +3,7 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { MdOutlinePublishedWithChanges } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useProducts from '../../hooks/useProducts.js';
 import Navbar from '../Shared/Navbar/Navbar';
@@ -61,6 +61,12 @@ const AllProducts = () => {
         <h2 className="text-4xl text-center text-rose-500 my-5 lg:my-10 font-bold">
           Available Products for Whole Sell
         </h2>
+        <h4 className="text-center text-2xl font-semibold mb-5">
+          Want to add new product?{' '}
+          <Link className="underline text-blue-600" to="/add-items">
+            Click here
+          </Link>
+        </h4>
         <div className="flex flex-col mb-10">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
@@ -131,6 +137,7 @@ const AllProducts = () => {
                         <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
                           <div className="flex">
                             <MdOutlinePublishedWithChanges
+                              title="Update The Product"
                               onClick={() =>
                                 navigate(`/productUpdate/${product._id}`)
                               }
@@ -138,6 +145,7 @@ const AllProducts = () => {
                               className="mr-2 cursor-pointer text-green-600"
                             />
                             <RiDeleteBin2Fill
+                              title="Delete The Product"
                               onClick={() => deletion(product._id)}
                               size={30}
                               className="cursor-pointer text-red-600"
