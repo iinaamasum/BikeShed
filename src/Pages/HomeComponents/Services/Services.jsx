@@ -2,7 +2,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect } from 'react';
 import ban1 from '../../../images/image/ban2.jpg';
-import ban2 from '../../../images/image/viktor-keri-0gLH1kqRldc-unsplash.jpg';
+import ban2 from '../../../images/image/lowersection.jpg';
 import Service from '../Service/Service';
 
 const Services = () => {

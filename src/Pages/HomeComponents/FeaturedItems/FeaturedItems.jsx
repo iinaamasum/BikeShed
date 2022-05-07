@@ -2,9 +2,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import fech1 from '../../../images/image/chris-barbalis-Lpqg7ypu2B4-unsplash.jpg';
-import fech2 from '../../../images/image/mac-blades-jpgJSBQtw5U-unsplash.jpg';
-import fech3 from '../../../images/image/tiffany-nutt-0ClfreiNppM-unsplash.jpg';
+import fech1 from '../../../images/image/download.jpg';
+import fech2 from '../../../images/image/images.jpg';
+import fech3 from '../../../images/image/istockphoto-1340571998-170667a.jpg';
 import './FeaturedItems.css';
 
 const FeaturedItems = () => {
@@ -49,7 +49,7 @@ const FeaturedItems = () => {
           }}
           className="h-60 md:h-96 bg-cover bg-center"
         >
-          <div className="backdrop__blur w-full h-full pt-10 md:pt-24">
+          <div className="w-full h-full pt-10 md:pt-24">
             <div className="pl-4 flex items-center">
               <div className="">
                 <h3 className="text-5xl font-bold text-orange-600 mb-2">

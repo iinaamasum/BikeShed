@@ -21,7 +21,7 @@ const UserDataCard = (props) => {
         >
           <img
             className="h-60 rounded w-full object-cover object-center mb-6"
-            src="https://dummyimage.com/722x402"
+            src={img}
             alt="content"
           />
           <h3 className="tracking-w_idest text-red-500 text-xs font-medium title-font px-2">

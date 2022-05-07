@@ -129,7 +129,7 @@ const AllProducts = () => {
                           {product.sup_name}
                         </td>
                         <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
-                          {product.price}
+                          ${product.price}
                         </td>
                         <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
                           {product.quantity}

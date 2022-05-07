@@ -1,162 +1,258 @@
 [
   {
-    "name": "Durante McJerrow",
-    "price": "$244.95",
+    "name": "Duronto Gurni 29",
+    "price": 244.95,
     "quantity": 71,
-    "des": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet.",
-    "sup_name": "Israel Flewin",
-    "img": "http://dummyimage.com/182x100.png/5fa2dd/ffffff"
+    "des": "duronto gurni is a top class bi cycle with double gear and high quality that can amaze your riding skill and feel.",
+    "sup_name": "Nadir Khan",
+    "img": "https://i.ibb.co/5T5JpCs/1.jpg"
   },
   {
-    "name": "Kenna Kleinlerer",
-    "price": "$326.80",
+    "name": "Phonix Ponta G2",
+    "price": 326.8,
     "quantity": 78,
-    "des": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.",
+    "des": "It is a must have bike for all the riders who are looking for a bike that is affordable and has a good quality.",
     "sup_name": "Wyatt Silson",
-    "img": "http://dummyimage.com/237x100.png/ff4444/ffffff"
+    "img": "https://i.ibb.co/DV6vwZJ/15.jpg"
   },
   {
-    "name": "Martie Ishchenko",
-    "price": "$329.59",
+    "name": "Hero Tufan 629",
+    "price": 329.59,
     "quantity": 38,
-    "des": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
+    "des": "The Hero Tufan 629 is a top class bike that is made of high quality materials and has a good quality.",
     "sup_name": "Enriqueta Bassingham",
-    "img": "http://dummyimage.com/208x100.png/ff4444/ffffff"
+    "img": "https://i.ibb.co/x21KFGQ/13.jpg"
   },
   {
-    "name": "Britt Do",
-    "price": "$336.02",
+    "name": "Tintu Fire 79",
+    "price": 336.02,
     "quantity": 56,
-    "des": "Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.",
+    "des": "The tintu fire shows the user to must have a such quality by for showup. It is a top class bike.",
     "sup_name": "Allissa Speares",
-    "img": "http://dummyimage.com/239x100.png/cc0000/ffffff"
+    "img": "https://i.ibb.co/GV1yQRg/11.jpg"
   },
   {
-    "name": "Lotti Crampsy",
-    "price": "$221.27",
+    "name": "BD Rider Pro",
+    "price": 221.27,
     "quantity": 53,
-    "des": "Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.",
+    "des": "The BD ride pro is giving a long lasting bi-cycle using experience to the people of the country. It is mainly designed for middle class people.",
     "sup_name": "Courtney Maunder",
-    "img": "http://dummyimage.com/136x100.png/5fa2dd/ffffff"
+    "img": "https://i.ibb.co/JdDRkTH/10.jpg"
   },
   {
-    "name": "Burg Coffey",
-    "price": "$396.11",
+    "name": "Jhakanaka Pyrico F292",
+    "price": 396.11,
     "quantity": 15,
-    "des": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
+    "des": "The jhakanaka pyrico f292 is a must having bike for bi-cycle dreamers. It is a top class bike that is made of high quality materials.",
     "sup_name": "Cathrin Goodchild",
-    "img": "http://dummyimage.com/202x100.png/ff4444/ffffff"
+    "img": "https://i.ibb.co/3Bx9sYS/9.jpg"
   },
   {
-    "name": "Alyse Fullstone",
-    "price": "$230.48",
-    "quantity": 53,
-    "des": "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.",
-    "sup_name": "Shepard Rossoni",
-    "img": "http://dummyimage.com/200x100.png/5fa2dd/ffffff"
+    "name": "Duronto Gurni 29",
+    "price": 244.95,
+    "quantity": 71,
+    "des": "duronto gurni is a top class bi cycle with double gear and high quality that can amaze your riding skill and feel.",
+    "sup_name": "Nadir Khan",
+    "img": "https://i.ibb.co/5T5JpCs/1.jpg"
   },
   {
-    "name": "Dan Stendall",
-    "price": "$342.57",
-    "quantity": 95,
-    "des": "Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.",
-    "sup_name": "Erv Lude",
-    "img": "http://dummyimage.com/104x100.png/5fa2dd/ffffff"
-  },
-  {
-    "name": "Erma Spencley",
-    "price": "$369.43",
-    "quantity": 33,
-    "des": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
-    "sup_name": "Garey Kyd",
-    "img": "http://dummyimage.com/124x100.png/cc0000/ffffff"
-  },
-  {
-    "name": "Talya Fley",
-    "price": "$282.85",
-    "quantity": 11,
-    "des": "Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa. Donec dapibus. Duis at velit eu est congue elementum.",
-    "sup_name": "Fanni Roome",
-    "img": "http://dummyimage.com/143x100.png/ff4444/ffffff"
-  },
-  {
-    "name": "Peterus Rhyme",
-    "price": "$282.71",
-    "quantity": 82,
-    "des": "Duis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.",
-    "sup_name": "Davey Dockery",
-    "img": "http://dummyimage.com/153x100.png/dddddd/000000"
-  },
-  {
-    "name": "Chauncey Mechan",
-    "price": "$286.21",
+    "name": "Phonix Ponta G2",
+    "price": 326.8,
     "quantity": 78,
-    "des": "Integer ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.",
-    "sup_name": "Lewiss Newlin",
-    "img": "http://dummyimage.com/201x100.png/cc0000/ffffff"
+    "des": "It is a must have bike for all the riders who are looking for a bike that is affordable and has a good quality.",
+    "sup_name": "Wyatt Silson",
+    "img": "https://i.ibb.co/DV6vwZJ/15.jpg"
   },
   {
-    "name": "Pat Audsley",
-    "price": "$300.75",
-    "quantity": 54,
-    "des": "Suspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.",
-    "sup_name": "Abe Brimson",
-    "img": "http://dummyimage.com/178x100.png/ff4444/ffffff"
+    "name": "Hero Tufan 629",
+    "price": 329.59,
+    "quantity": 38,
+    "des": "The Hero Tufan 629 is a top class bike that is made of high quality materials and has a good quality.",
+    "sup_name": "Enriqueta Bassingham",
+    "img": "https://i.ibb.co/x21KFGQ/13.jpg"
   },
   {
-    "name": "Briano Hindmore",
-    "price": "$268.89",
-    "quantity": 70,
-    "des": "Cras mi pede, malesuada in, imperdiet et, commodo vulputate, justo. In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-    "sup_name": "Anatollo MacNeillie",
-    "img": "http://dummyimage.com/137x100.png/ff4444/ffffff"
+    "name": "BD Rider Pro",
+    "price": 221.27,
+    "quantity": 53,
+    "des": "The BD ride pro is giving a long lasting bi-cycle using experience to the people of the country. It is mainly designed for middle class people.",
+    "sup_name": "Courtney Maunder",
+    "img": "https://i.ibb.co/FYNQq14/8.jpg"
   },
   {
-    "name": "Archibald Vaughan-Hughes",
-    "price": "$231.60",
-    "quantity": 89,
-    "des": "In hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.",
-    "sup_name": "Colet Leas",
-    "img": "http://dummyimage.com/124x100.png/dddddd/000000"
+    "name": "Jhakanaka Pyrico F292",
+    "price": 396.11,
+    "quantity": 15,
+    "des": "The jhakanaka pyrico f292 is a must having bike for bi-cycle dreamers. It is a top class bike that is made of high quality materials.",
+    "sup_name": "Cathrin Goodchild",
+    "img": "https://i.ibb.co/gjhgFy3/7.jpg"
   },
   {
-    "name": "Arlan Gages",
-    "price": "$368.76",
-    "quantity": 19,
-    "des": "Donec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.",
-    "sup_name": "Kitti Kenwood",
-    "img": "http://dummyimage.com/246x100.png/cc0000/ffffff"
+    "name": "Duronto Gurni 29",
+    "price": 244.95,
+    "quantity": 71,
+    "des": "duronto gurni is a top class bi cycle with double gear and high quality that can amaze your riding skill and feel.",
+    "sup_name": "Nadir Khan",
+    "img": "https://i.ibb.co/5T5JpCs/1.jpg"
   },
   {
-    "name": "Darrick Elstow",
-    "price": "$361.94",
-    "quantity": 91,
-    "des": "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.",
-    "sup_name": "Leland Ingre",
-    "img": "http://dummyimage.com/189x100.png/cc0000/ffffff"
+    "name": "Phonix Ponta G2",
+    "price": 326.8,
+    "quantity": 78,
+    "des": "It is a must have bike for all the riders who are looking for a bike that is affordable and has a good quality.",
+    "sup_name": "Wyatt Silson",
+    "img": "https://i.ibb.co/DV6vwZJ/15.jpg"
   },
   {
-    "name": "Glenn Buddle",
-    "price": "$205.61",
-    "quantity": 99,
-    "des": "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
-    "sup_name": "Garrott Gaiger",
-    "img": "http://dummyimage.com/232x100.png/5fa2dd/ffffff"
+    "name": "Hero Tufan 629",
+    "price": 329.59,
+    "quantity": 38,
+    "des": "The Hero Tufan 629 is a top class bike that is made of high quality materials and has a good quality.",
+    "sup_name": "Enriqueta Bassingham",
+    "img": "https://i.ibb.co/x21KFGQ/13.jpg"
   },
   {
-    "name": "Franzen Merner",
-    "price": "$284.69",
-    "quantity": 76,
-    "des": "Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.",
-    "sup_name": "Lacy Ovesen",
-    "img": "http://dummyimage.com/151x100.png/ff4444/ffffff"
+    "name": "BD Rider Pro",
+    "price": 221.27,
+    "quantity": 53,
+    "des": "The BD ride pro is giving a long lasting bi-cycle using experience to the people of the country. It is mainly designed for middle class people.",
+    "sup_name": "Courtney Maunder",
+    "img": "https://i.ibb.co/XVbk0Q6/6.jpg"
   },
   {
-    "name": "Ewart Beade",
-    "price": "$371.55",
-    "quantity": 6,
-    "des": "Sed ante. Vivamus tortor. Duis mattis egestas metus.",
-    "sup_name": "Anjela McNevin",
-    "img": "http://dummyimage.com/207x100.png/5fa2dd/ffffff"
+    "name": "Jhakanaka Pyrico F292",
+    "price": 396.11,
+    "quantity": 15,
+    "des": "The jhakanaka pyrico f292 is a must having bike for bi-cycle dreamers. It is a top class bike that is made of high quality materials.",
+    "sup_name": "Cathrin Goodchild",
+    "img": "https://i.ibb.co/RQfmWsv/4.jpg"
+  },
+  {
+    "name": "Duronto Gurni 29",
+    "price": 244.95,
+    "quantity": 71,
+    "des": "duronto gurni is a top class bi cycle with double gear and high quality that can amaze your riding skill and feel.",
+    "sup_name": "Nadir Khan",
+    "img": "https://i.ibb.co/5T5JpCs/1.jpg"
+  },
+  {
+    "name": "Phonix Ponta G2",
+    "price": 326.8,
+    "quantity": 78,
+    "des": "It is a must have bike for all the riders who are looking for a bike that is affordable and has a good quality.",
+    "sup_name": "Wyatt Silson",
+    "img": "https://i.ibb.co/DV6vwZJ/15.jpg"
+  },
+  {
+    "name": "Hero Tufan 629",
+    "price": 329.59,
+    "quantity": 38,
+    "des": "The Hero Tufan 629 is a top class bike that is made of high quality materials and has a good quality.",
+    "sup_name": "Enriqueta Bassingham",
+    "img": "https://i.ibb.co/x21KFGQ/13.jpg"
+  },
+  {
+    "name": "Tintu Fire 79",
+    "price": 336.02,
+    "quantity": 56,
+    "des": "The tintu fire shows the user to must have a such quality by for showup. It is a top class bike.",
+    "sup_name": "Allissa Speares",
+    "img": "https://i.ibb.co/GV1yQRg/11.jpg"
+  },
+  {
+    "name": "BD Rider Pro",
+    "price": 221.27,
+    "quantity": 53,
+    "des": "The BD ride pro is giving a long lasting bi-cycle using experience to the people of the country. It is mainly designed for middle class people.",
+    "sup_name": "Courtney Maunder",
+    "img": "https://i.ibb.co/JdDRkTH/10.jpg"
+  },
+  {
+    "name": "Jhakanaka Pyrico F292",
+    "price": 396.11,
+    "quantity": 15,
+    "des": "The jhakanaka pyrico f292 is a must having bike for bi-cycle dreamers. It is a top class bike that is made of high quality materials.",
+    "sup_name": "Cathrin Goodchild",
+    "img": "https://i.ibb.co/3Bx9sYS/9.jpg"
+  },
+  {
+    "name": "Duronto Gurni 29",
+    "price": 244.95,
+    "quantity": 71,
+    "des": "duronto gurni is a top class bi cycle with double gear and high quality that can amaze your riding skill and feel.",
+    "sup_name": "Nadir Khan",
+    "img": "https://i.ibb.co/5T5JpCs/1.jpg"
+  },
+  {
+    "name": "Phonix Ponta G2",
+    "price": 326.8,
+    "quantity": 78,
+    "des": "It is a must have bike for all the riders who are looking for a bike that is affordable and has a good quality.",
+    "sup_name": "Wyatt Silson",
+    "img": "https://i.ibb.co/DV6vwZJ/15.jpg"
+  },
+  {
+    "name": "Hero Tufan 629",
+    "price": 329.59,
+    "quantity": 38,
+    "des": "The Hero Tufan 629 is a top class bike that is made of high quality materials and has a good quality.",
+    "sup_name": "Enriqueta Bassingham",
+    "img": "https://i.ibb.co/x21KFGQ/13.jpg"
+  },
+  {
+    "name": "BD Rider Pro",
+    "price": 221.27,
+    "quantity": 53,
+    "des": "The BD ride pro is giving a long lasting bi-cycle using experience to the people of the country. It is mainly designed for middle class people.",
+    "sup_name": "Courtney Maunder",
+    "img": "https://i.ibb.co/FYNQq14/8.jpg"
+  },
+  {
+    "name": "Jhakanaka Pyrico F292",
+    "price": 396.11,
+    "quantity": 15,
+    "des": "The jhakanaka pyrico f292 is a must having bike for bi-cycle dreamers. It is a top class bike that is made of high quality materials.",
+    "sup_name": "Cathrin Goodchild",
+    "img": "https://i.ibb.co/gjhgFy3/7.jpg"
+  },
+  {
+    "name": "Duronto Gurni 29",
+    "price": 244.95,
+    "quantity": 71,
+    "des": "duronto gurni is a top class bi cycle with double gear and high quality that can amaze your riding skill and feel.",
+    "sup_name": "Nadir Khan",
+    "img": "https://i.ibb.co/5T5JpCs/1.jpg"
+  },
+  {
+    "name": "Phonix Ponta G2",
+    "price": 326.8,
+    "quantity": 78,
+    "des": "It is a must have bike for all the riders who are looking for a bike that is affordable and has a good quality.",
+    "sup_name": "Wyatt Silson",
+    "img": "https://i.ibb.co/DV6vwZJ/15.jpg"
+  },
+  {
+    "name": "Hero Tufan 629",
+    "price": 329.59,
+    "quantity": 38,
+    "des": "The Hero Tufan 629 is a top class bike that is made of high quality materials and has a good quality.",
+    "sup_name": "Enriqueta Bassingham",
+    "img": "https://i.ibb.co/x21KFGQ/13.jpg"
+  },
+  {
+    "name": "BD Rider Pro",
+    "price": 221.27,
+    "quantity": 53,
+    "des": "The BD ride pro is giving a long lasting bi-cycle using experience to the people of the country. It is mainly designed for middle class people.",
+    "sup_name": "Courtney Maunder",
+    "img": "https://i.ibb.co/XVbk0Q6/6.jpg"
+  },
+  {
+    "name": "Jhakanaka Pyrico F292",
+    "price": 396.11,
+    "quantity": 15,
+    "des": "The jhakanaka pyrico f292 is a must having bike for bi-cycle dreamers. It is a top class bike that is made of high quality materials.",
+    "sup_name": "Cathrin Goodchild",
+    "img": "https://i.ibb.co/RQfmWsv/4.jpg"
   }
 ]

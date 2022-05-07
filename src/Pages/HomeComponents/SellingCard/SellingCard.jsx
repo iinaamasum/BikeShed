@@ -21,7 +21,7 @@ const SellingCard = (props) => {
         >
           <img
             className="h-60 rounded w-full object-cover object-center mb-6"
-            src="https://dummyimage.com/722x402"
+            src={img}
             alt="content"
           />
           <h3 className="tracking-w_idest text-red-500 text-xs font-medium title-font px-2">
@@ -35,7 +35,7 @@ const SellingCard = (props) => {
           </p>
           <div className="absolute bottom-0 w-full">
             <div className="flex justify-between items-center relative bottom-0 text-red-600 text-lg font-bold mb-2 px-2">
-              <p>Price: {price}</p>
+              <p>Price: ${price}</p>
               <p>Items Left: {quantity}</p>
             </div>
             <button
