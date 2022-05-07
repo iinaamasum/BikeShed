@@ -63,7 +63,7 @@ const AllProducts = () => {
         </h2>
         <h4 className="text-center text-2xl font-semibold mb-5">
           Want to add new product?{' '}
-          <Link className="underline text-blue-600" to="/add-items">
+          <Link className="underline text-blue-600" to="/addProduct">
             Click here
           </Link>
         </h4>

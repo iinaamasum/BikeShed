@@ -2,6 +2,7 @@ import { Toaster } from 'react-hot-toast';
 import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import './App.css';
+import AddProduct from './Pages/AddProduct/AddProduct';
 import AllProducts from './Pages/AllProducts/AllProducts';
 import LogIn from './Pages/Auth/LogIn/LogIn';
 import RequireAuth from './Pages/Auth/RequireAuth/RequireAuth';
@@ -51,6 +52,14 @@ function App() {
             element={
               <RequireAuth>
                 <AddItems />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/addProduct"
+            element={
+              <RequireAuth>
+                <AddProduct />
               </RequireAuth>
             }
           />
