@@ -46,7 +46,7 @@ const FeaturedItems = () => {
           }}
           className="h-60 md:h-96 bg-cover bg-center"
         >
-          <div className="backdrop__blur backdrop-contrast-50 w-full h-full pt-10 md:pt-24">
+          <div className="backdrop__blur w-full h-full pt-10 md:pt-24">
             <div className="pl-4 flex items-center">
               <div className="">
                 <h3 className="text-5xl font-bold text-orange-600 mb-2">

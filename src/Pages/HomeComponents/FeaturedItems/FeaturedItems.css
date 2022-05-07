@@ -1,4 +1,4 @@
 .backdrop__blur {
   /* backdrop-filter: blur(2px); */
-  backdrop-filter: brightness(0.6);
+  backdrop-filter: brightness(0.35);
 }
