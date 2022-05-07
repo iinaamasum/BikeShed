@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import {
   useAuthState,
@@ -77,11 +78,14 @@ const SignUp = () => {
     }
   };
   const handleSubmit = async (e) => {
-    const displayName = userData.name;
     e.preventDefault();
     if (userData.pass === userData.confirmPass) {
       await createUserWithEmailAndPassword(userData.email, userData.pass);
-      await updateProfile({ displayName });
+      await updateProfile({ displayName: userData.name });
+      const { data } = await axios.post('http://localhost:5000/login', {
+        email: userData.email,
+      });
+      localStorage.setItem('token', data.token);
       toast.success(
         `Congratulations ${user.displayName}. Account Created Successfully.`
       );

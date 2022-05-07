@@ -64,7 +64,6 @@ const LogIn = () => {
       const { data } = await axios.post('http://localhost:5000/login', {
         email: userData.email,
       });
-      // console.log(userData.email);
       localStorage.setItem('token', data.token);
     }
     e.target.reset();

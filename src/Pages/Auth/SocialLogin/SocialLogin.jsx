@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React from 'react';
 import {
+  useAuthState,
   useSignInWithFacebook,
   useSignInWithGithub,
   useSignInWithGoogle,
@@ -15,25 +17,42 @@ const SocialLogin = () => {
     useSignInWithFacebook(auth);
   const [signInWithGithub, gitUser, gitlLoading, gitError] =
     useSignInWithGithub(auth);
+  const [user] = useAuthState(auth);
+
+  const tokenSet = async () => {
+    const { data } = await axios.post('http://localhost:5000/login', {
+      email: user.email,
+    });
+    localStorage.setItem('token', data.token);
+  };
   return (
     <>
       <div className="sm:flex justify-between text-center">
         <button
-          onClick={() => signInWithGoogle()}
+          onClick={async () => {
+            await signInWithGoogle();
+            await tokenSet();
+          }}
           className="w-full mr-1 flex items-center justify-center text-xl font-semibold shadow border-red-500 bg-white rounded-full px-5 py-2 hover:bg-red-500 hover:text-white text-black transition-all duration-200 ease-linear text-center my-1 sm:my-0"
         >
           <BsGoogle size={30} className="mr-3" />
           Google
         </button>
         <button
-          onClick={() => signInWithFacebook()}
+          onClick={async () => {
+            await signInWithFacebook();
+            await tokenSet();
+          }}
           className="w-full mr-1 flex items-center justify-center text-xl font-semibold shadow border-red-500 bg-white rounded-full px-5 py-2 hover:bg-red-500 hover:text-white text-black transition-all duration-200 ease-linear text-center my-1 sm:my-0"
         >
           <FaFacebook size={30} className="mr-3" />
           Facebook
         </button>
         <button
-          onClick={() => signInWithGithub()}
+          onClick={async () => {
+            await signInWithGithub();
+            await tokenSet();
+          }}
           className="w-full mr-1 flex items-center justify-center text-xl font-semibold shadow border-red-500 bg-white rounded-full px-5 py-2 hover:bg-red-500 hover:text-white text-black transition-all duration-200 ease-linear text-center my-1 sm:my-0"
         >
           <FaGithub size={30} className="mr-3" />

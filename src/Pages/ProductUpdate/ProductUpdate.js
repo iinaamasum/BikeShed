@@ -116,7 +116,7 @@ const ProductUpdate = () => {
                   onClick={() => handleRemoveOne(_id)}
                   className="w-full px-4 py-2 mt-2 bg-red-500 rounded text-white"
                 >
-                  Remove One
+                  Delivered
                 </button>
                 <form
                   onSubmit={(e) => {
@@ -127,12 +127,12 @@ const ProductUpdate = () => {
                   <input
                     name="updateamount"
                     className="w-full bg-white rounded-l border border-gray-300 focus:border-indigo-500 outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    placeholder="Enter the amount..."
+                    placeholder="Enter the quantity..."
                     type="number"
                   />
                   <input
                     type="submit"
-                    value="Add Items"
+                    value="Pestock Product"
                     className="px-4 py-2 bg-green-600 rounded-r text-white cursor-pointer border-y-2 border-green-600 mx-auto"
                   />
                 </form>
