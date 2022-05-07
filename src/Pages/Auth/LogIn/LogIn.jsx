@@ -61,10 +61,10 @@ const LogIn = () => {
       setErrors({ ...errors, passError: 'Password is required' });
     } else {
       await signInWithEmailAndPassword(userData.email, userData.pass);
-      const { data } = await axios.post(
-        'http://localhost:5000/login',
-        userData.email
-      );
+      const { data } = await axios.post('http://localhost:5000/login', {
+        email: userData.email,
+      });
+      // console.log(userData.email);
       localStorage.setItem('token', data.token);
     }
     e.target.reset();

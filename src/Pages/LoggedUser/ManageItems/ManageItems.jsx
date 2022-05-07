@@ -11,11 +11,19 @@ const ManageItems = () => {
 
   useEffect(() => {
     const url = `http://localhost:5000/items?email=${user.email}`;
-    axios.get(url).then((res) => {
-      setItems(res.data);
-    });
+    try {
+      axios
+        .get(url, {
+          headers: {
+            author: `Bearer ${localStorage.getItem('token')}`,
+          },
+        })
+        .then((res) => {
+          setItems(res.data);
+        });
+    } catch (error) {}
   }, [user]);
-  console.log(items);
+  // console.log(items);
   return (
     <>
       <Navbar />

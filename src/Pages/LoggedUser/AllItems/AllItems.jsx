@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { confirmAlert } from 'react-confirm-alert';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -17,9 +18,24 @@ const AllItems = () => {
 
   useEffect(() => {
     const url = `http://localhost:5000/items?email=${user.email}`;
-    axios.get(url).then((res) => {
-      setItems(res.data);
-    });
+    const getItems = async () => {
+      try {
+        await axios
+          .get(url, {
+            headers: {
+              author: `Bearer ${localStorage.getItem('token')}`,
+            },
+          })
+          .then((res) => {
+            setItems(res.data);
+          });
+      } catch (err) {
+        toast.error(err.response.data.message);
+        signOut(auth);
+        navigate('/login');
+      }
+    };
+    getItems();
   }, []);
 
   const deletion = (id) => {

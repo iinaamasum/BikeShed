@@ -5,6 +5,7 @@ import { CgClose } from 'react-icons/cg';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import ActiveLink from '../../../ActiveLink';
 import auth from '../../../firebase.init';
 import userImg from '../../../images/image/user.png';
 import logo from '../../../images/logo/logo.png';
@@ -49,15 +50,19 @@ const Navbar = () => {
               ${open ? 'block' : 'hidden'}`}
             >
               <div className="lg:flex lg:items-center lg:justify-between w-full lg:w-auto">
-                <div className="w-full lg:w-auto lg:ml-auto">
+                <div className="w-full lg:flex lg:w-auto lg:ml-auto">
                   {navLinksOne.map((link) => (
-                    <Link
-                      className="block my-2 lg:my-0 w-full lg:w-auto lg:inline-block mr-0 md:mr-4 font-semibold hover:text-red-800"
-                      to={link.path}
+                    <div
                       key={link.id}
+                      className="lg:flex lg:items-center mr-0 lg:mr-5 text-gray-500 hover:text-red-500"
                     >
-                      {link.name}
-                    </Link>
+                      <ActiveLink
+                        className="block my-2 lg:my-0 w-full lg:w-auto lg:inline-block font-bold"
+                        to={link.path}
+                      >
+                        {link.name}
+                      </ActiveLink>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -70,15 +75,19 @@ const Navbar = () => {
               {user ? (
                 <>
                   <div className="lg:flex lg:items-center lg:justify-between w-full lg:w-auto ml-auto">
-                    <div className="w-full lg:w-auto">
+                    <div className="w-full lg:flex lg:w-auto lg:ml-auto">
                       {navLinksTwo.map((link) => (
-                        <Link
-                          className="block my-2 lg:my-0 w-full lg:w-auto lg:inline-block mr-0 md:mr-4 font-semibold text-red-800 hover:text-gray-600"
-                          to={link.path}
+                        <div
                           key={link.id}
+                          className="lg:flex lg:items-center mr-0 lg:mr-5 text-gray-500 hover:text-red-500"
                         >
-                          {link.name}
-                        </Link>
+                          <ActiveLink
+                            className="block my-2 lg:my-0 w-full lg:w-auto lg:inline-block font-bold"
+                            to={link.path}
+                          >
+                            {link.name}
+                          </ActiveLink>
+                        </div>
                       ))}
                     </div>
                   </div>
