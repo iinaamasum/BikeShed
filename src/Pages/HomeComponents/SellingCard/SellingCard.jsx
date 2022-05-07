@@ -17,7 +17,7 @@ const SellingCard = (props) => {
         <div
           data-aos="fade-up"
           style={{ height: '500px' }}
-          className="rounded relative shadow-sm"
+          className="relative shadow-sm bg-gray-50 rounded-lg"
         >
           <img
             className="h-60 rounded w-full object-cover object-center mb-6"

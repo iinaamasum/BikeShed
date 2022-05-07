@@ -1,6 +1,7 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import fech1 from '../../../images/image/chris-barbalis-Lpqg7ypu2B4-unsplash.jpg';
 import fech2 from '../../../images/image/mac-blades-jpgJSBQtw5U-unsplash.jpg';
 import fech3 from '../../../images/image/tiffany-nutt-0ClfreiNppM-unsplash.jpg';
@@ -31,9 +32,11 @@ const FeaturedItems = () => {
                 <p className="text-gray-300 text-lg font-semibold">
                   The all new pro 29 series
                 </p>
-                <button className="bg-purple-500 py-2 px-4 rounded text-white font-semibold">
-                  Learn More
-                </button>
+                <Link to="/products">
+                  <button className="bg-purple-500 py-2 px-4 rounded text-white font-semibold">
+                    Learn More
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -55,9 +58,11 @@ const FeaturedItems = () => {
                 <p className="text-gray-300 text-lg font-semibold">
                   25% Off trance
                 </p>
-                <button className="bg-slate-50 py-2 px-4 rounded text-black font-semibold">
-                  Discover More
-                </button>
+                <Link to="/products">
+                  <button className="bg-slate-50 py-2 px-4 rounded text-black font-semibold">
+                    Discover More
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -78,9 +83,11 @@ const FeaturedItems = () => {
                 <p className="text-gray-300 text-lg font-semibold">
                   New Style Just Got In
                 </p>
-                <button className="bg-purple-500 py-2 px-4 rounded text-white font-semibold">
-                  Learn More
-                </button>
+                <Link to="/products">
+                  <button className="bg-purple-500 py-2 px-4 rounded text-white font-semibold">
+                    Learn More
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

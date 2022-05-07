@@ -1,6 +1,7 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import ban from '../../../images/image/ban4.jpg';
 
 const Service = () => {
@@ -67,9 +68,11 @@ const Service = () => {
                   </p>
                 </div>
               </div>
-              <button className="bg-purple-500 py-2 px-4 rounded text-white font-semibold">
-                Learn More
-              </button>
+              <Link to="/blog">
+                <button className="bg-purple-500 py-2 px-4 rounded text-white font-semibold">
+                  Learn More
+                </button>
+              </Link>
             </div>
           </div>
         </div>

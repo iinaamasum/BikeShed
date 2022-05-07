@@ -41,7 +41,7 @@ const BestSelling = () => {
       <div className="flex justify-center">
         <button
           onClick={() => navigate('/products')}
-          className="px-10 py-2 bg-orange-500 rounded my-5 text-slate-900 font-semibold tracking-wide flex justify-center items-center hover:bg-orange-600 hover:text-white transition-all duration-200 "
+          className="px-10 py-2 hover:bg-[#0e6188] bg-[#08475f] rounded my-5 font-semibold tracking-wide flex justify-center items-center text-white transition-all duration-200 "
         >
           See All Collections
           <BiRightArrow className="ml-2 text-xl" />
