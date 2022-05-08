@@ -19,6 +19,7 @@ const Navbar = () => {
     { id: 2, name: 'All Products', path: '/products' },
     { id: 3, name: 'Add Product', path: '/addProduct' },
     { id: 4, name: 'Blog', path: '/blog' },
+    { id: 5, name: 'Contact Us', path: '/contact' },
   ];
   const navLinksTwo = [
     { id: 1, name: 'My Items', path: '/my-items' },
