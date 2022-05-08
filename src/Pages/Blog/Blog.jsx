@@ -30,7 +30,7 @@ const Blog = () => {
           </div>
           <div className="bg-gray-50 rounded-lg p-5 md:p-10">
             <h2 className="text-2xl text-blue-500 font-medium">
-              When should you use nodejs and when should you use mongodb
+              When should you use nodejs and when should you use mongodb?
             </h2>
             <p className="text-md font-normal text-slate-600 mt-3">
               MongoDB is a server service provider which provide us storage to
