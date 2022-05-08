@@ -28,8 +28,9 @@ const ManageItems = () => {
     <>
       <Navbar />
       <div style={{ maxWidth: '1300px' }} className="container px-4 mx-auto">
-        <h2 className="text-center text-4xl text-purple-600 font-bold mt-5">
-          Your All Product: {user.displayName}
+        <h2 className="text-center text-4xl text-purple-600 font-bold mt-5 mb-2">
+          Your All Product:{' '}
+          <span className="text-red-600">{user.displayName}</span>
         </h2>
         <p className="text-sm text-center font-medium text-slate-500">
           This products are added by you to sell via Me as a dealer. You can

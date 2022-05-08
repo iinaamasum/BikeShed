@@ -5,7 +5,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { MdOutlinePublishedWithChanges } from 'react-icons/md';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 import Navbar from '../../Shared/Navbar/Navbar';
@@ -89,6 +89,12 @@ const AllItems = () => {
           Products of the user{': '}
           <span className="text-red-600">{user.displayName}</span>
         </h2>
+        <h4 className="text-center text-2xl font-semibold mb-5">
+          Want to add new item?{' '}
+          <Link className="underline text-blue-600" to="/add-items">
+            Click here
+          </Link>
+        </h4>
         <div className="flex flex-col mb-10 bg-gray-50 rounded-lg p-5">
           <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">

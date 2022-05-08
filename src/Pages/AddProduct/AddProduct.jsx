@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import FileBase64 from 'react-file-base64';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Navbar from '../Shared/Navbar/Navbar';
@@ -37,6 +38,12 @@ const AddProduct = () => {
             Add Desired Product to Global
           </h2>
 
+          <h4 className="text-center text-2xl font-semibold mb-5">
+            Want to add new item for specific logged user only?{' '}
+            <Link className="underline text-blue-600" to="/add-items">
+              Click here
+            </Link>
+          </h4>
           <form onSubmit={handleSubmit(onSubmit)} className="py-5">
             <div className="flex items-center w-full">
               <div className="w-1/2 mr-3">

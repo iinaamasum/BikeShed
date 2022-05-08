@@ -132,7 +132,7 @@ const ProductUpdate = () => {
                   />
                   <input
                     type="submit"
-                    value="Pestock Product"
+                    value="Restock Product"
                     className="px-4 py-2 bg-green-600 rounded-r text-white cursor-pointer border-y-2 border-green-600 mx-auto"
                   />
                 </form>
