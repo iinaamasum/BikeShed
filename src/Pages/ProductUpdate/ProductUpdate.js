@@ -99,7 +99,12 @@ const ProductUpdate = () => {
                 </div>
                 <div className="flex flex-col items-center text-center justify-center">
                   <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">
-                    <span>Supplier:</span> {sup_name}
+                    Supplier:{' '}
+                    <span className="text-indigo-600">{sup_name}</span>
+                    <div className="flex items-center justify-between">
+                      <p className="text-sm mr-4">id: {_id}</p>
+                      <p className="text-sm">Sold: In stock</p>
+                    </div>
                   </h2>
                   <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
                   <p className="text-base">{des}</p>
