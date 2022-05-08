@@ -1,15 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import FileBase64 from 'react-file-base64';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
 import Navbar from '../Shared/Navbar/Navbar';
 
 const AddProduct = () => {
-  const [user] = useAuthState(auth);
   const { register, handleSubmit, errors, reset } = useForm();
   const [image, setImage] = useState({
     img: '',

@@ -8,18 +8,20 @@ import { RiDeleteBin2Fill } from 'react-icons/ri';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
+import Loading from '../../Loading/Loading';
 import Navbar from '../../Shared/Navbar/Navbar';
 
 const AllItems = () => {
   const [user] = useAuthState(auth);
   const [items, setItems] = useState([]);
-  // const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
     const url = `https://boiling-savannah-80856.herokuapp.com/items?email=${user.email}`;
     const getItems = async () => {
       try {
+        setIsLoading(true);
         await axios
           .get(url, {
             headers: {
@@ -28,6 +30,7 @@ const AllItems = () => {
           })
           .then((res) => {
             setItems(res.data);
+            setIsLoading(false);
           });
       } catch (err) {
         toast.error(err.response.data.message);
@@ -81,112 +84,118 @@ const AllItems = () => {
   return (
     <div>
       <Navbar />
-      <div
-        style={{ maxWidth: '1300px', minHeight: '50vh' }}
-        className="container px-4 mx-auto"
-      >
-        <h2 className="text-4xl text-center text-purple-500 my-5 lg:my-10 font-bold">
-          Products of the user{': '}
-          <span className="text-red-600">{user.displayName}</span>
-        </h2>
-        <h4 className="text-center text-2xl font-semibold mb-5">
-          Want to add new item?{' '}
-          <Link className="underline text-blue-600" to="/add-items">
-            Click here
-          </Link>
-        </h4>
-        <div className="flex flex-col mb-10 bg-gray-50 rounded-lg p-5">
-          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-              <div className="overflow-hidden">
-                <table className="min-w-full">
-                  <thead className="border-b">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
-                      >
-                        Photo
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
-                      >
-                        Product Name
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
-                      >
-                        Supplier
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
-                      >
-                        Price
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
-                      >
-                        In Stock
-                      </th>
-                      <th
-                        scope="col"
-                        className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
-                      >
-                        Actions
-                      </th>
-                    </tr>
-                  </thead>
-                  {items?.map((item) => (
-                    <tbody key={item._id}>
-                      <tr className="border-b">
-                        <td className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-900">
-                          <img
-                            className="h-20 w-20 rounded-full"
-                            src={item.img}
-                            alt=""
-                          />
-                        </td>
-                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
-                          {item.name}
-                        </td>
-                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
-                          {item.sup_name}
-                        </td>
-                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
-                          {item.price}
-                        </td>
-                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
-                          {item.quantity}
-                        </td>
-                        <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
-                          <div className="flex">
-                            <MdOutlinePublishedWithChanges
-                              title="Update The Product"
-                              onClick={() => navigate(`/item/${item._id}`)}
-                              size={30}
-                              className="mr-2 cursor-pointer text-green-600"
-                            />
-                            <RiDeleteBin2Fill
-                              title="Delete The Product"
-                              onClick={() => deletion(item._id)}
-                              size={30}
-                              className="cursor-pointer text-red-600"
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  ))}
-                </table>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <div
+            style={{ maxWidth: '1300px', minHeight: '50vh' }}
+            className="container px-4 mx-auto"
+          >
+            <h2 className="text-4xl text-center text-purple-500 my-5 lg:my-10 font-bold">
+              Products of the user{': '}
+              <span className="text-red-600">{user.displayName}</span>
+            </h2>
+            <h4 className="text-center text-2xl font-semibold mb-5">
+              Want to add new item?{' '}
+              <Link className="underline text-blue-600" to="/add-items">
+                Click here
+              </Link>
+            </h4>
+            <div className="flex flex-col mb-10 bg-gray-50 rounded-lg p-5">
+              <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+                <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+                  <div className="overflow-hidden">
+                    <table className="min-w-full">
+                      <thead className="border-b">
+                        <tr>
+                          <th
+                            scope="col"
+                            className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
+                          >
+                            Photo
+                          </th>
+                          <th
+                            scope="col"
+                            className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
+                          >
+                            Product Name
+                          </th>
+                          <th
+                            scope="col"
+                            className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
+                          >
+                            Supplier
+                          </th>
+                          <th
+                            scope="col"
+                            className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
+                          >
+                            Price
+                          </th>
+                          <th
+                            scope="col"
+                            className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
+                          >
+                            In Stock
+                          </th>
+                          <th
+                            scope="col"
+                            className="text-xl font-semibold text-gray-900 px-6 py-4 text-left"
+                          >
+                            Actions
+                          </th>
+                        </tr>
+                      </thead>
+                      {items?.map((item) => (
+                        <tbody key={item._id}>
+                          <tr className="border-b">
+                            <td className="px-6 py-4 whitespace-nowrap text-md font-medium text-gray-900">
+                              <img
+                                className="h-20 w-20 rounded-full"
+                                src={item.img}
+                                alt=""
+                              />
+                            </td>
+                            <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                              {item.name}
+                            </td>
+                            <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                              {item.sup_name}
+                            </td>
+                            <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                              {item.price}
+                            </td>
+                            <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                              {item.quantity}
+                            </td>
+                            <td className="text-md text-gray-900 font-normal px-6 py-4 whitespace-nowrap">
+                              <div className="flex">
+                                <MdOutlinePublishedWithChanges
+                                  title="Update The Product"
+                                  onClick={() => navigate(`/item/${item._id}`)}
+                                  size={30}
+                                  className="mr-2 cursor-pointer text-green-600"
+                                />
+                                <RiDeleteBin2Fill
+                                  title="Delete The Product"
+                                  onClick={() => deletion(item._id)}
+                                  size={30}
+                                  className="cursor-pointer text-red-600"
+                                />
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      ))}
+                    </table>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };
