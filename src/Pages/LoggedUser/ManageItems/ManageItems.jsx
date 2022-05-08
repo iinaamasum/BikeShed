@@ -39,7 +39,7 @@ const ManageItems = () => {
       ) : (
         <>
           <div
-            style={{ maxWidth: '1300px' }}
+            style={{ maxWidth: '1300px', minHeight: '50vh' }}
             className="container px-4 mx-auto"
           >
             <h2 className="text-center text-4xl text-purple-600 font-bold mt-5 mb-2">
