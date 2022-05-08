@@ -48,6 +48,7 @@ const ProductUpdate = () => {
           progress: undefined,
         });
       });
+    e.target.reset();
   };
   const handleRemoveOne = (id, e) => {
     const q = product.quantity - 1;
