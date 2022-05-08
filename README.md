@@ -1,6 +1,6 @@
 # BikeShed - the place to stock bi-cycle
 
-Live Site: [Click here](http://localhost:3000/).
+Live Site: [Click here](https://warehouse-4de2f.web.app/).
 
 ## About the Project
 
