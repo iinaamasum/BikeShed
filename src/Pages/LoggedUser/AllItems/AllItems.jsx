@@ -17,7 +17,7 @@ const AllItems = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = `http://localhost:5000/items?email=${user.email}`;
+    const url = `https://boiling-savannah-80856.herokuapp.com/items?email=${user.email}`;
     const getItems = async () => {
       try {
         await axios
@@ -62,7 +62,7 @@ const AllItems = () => {
   };
 
   const handleDelete = (id) => {
-    const url = `http://localhost:5000/item/${id}`;
+    const url = `https://boiling-savannah-80856.herokuapp.com/item/${id}`;
 
     fetch(url, {
       method: 'DELETE',

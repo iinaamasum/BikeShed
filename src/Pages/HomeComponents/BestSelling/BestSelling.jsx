@@ -16,7 +16,7 @@ const BestSelling = () => {
         CHECK IT OUT
       </h4>
       <h1 className="text-center text-4xl md:text-5xl font-mono tracking-wide font-bold">
-        Best Sellers
+        Our Stock
       </h1>
 
       <div className="flex flex-wrap w-full my-10">

@@ -13,7 +13,7 @@ const ProductUpdate = () => {
   const { _id, name, img, des, price, quantity, sup_name } = product;
 
   useEffect(() => {
-    const url = `http://localhost:5000/product/${productId}`;
+    const url = `https://boiling-savannah-80856.herokuapp.com/product/${productId}`;
 
     fetch(url)
       .then((res) => res.json())
@@ -28,7 +28,7 @@ const ProductUpdate = () => {
       return toast.error('Please enter the quantity to add');
     }
 
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://boiling-savannah-80856.herokuapp.com/product/${id}`;
     const q = parseInt(product.quantity) + add;
 
     // updating by axios:)))
@@ -51,7 +51,7 @@ const ProductUpdate = () => {
   };
   const handleRemoveOne = (id, e) => {
     const q = product.quantity - 1;
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://boiling-savannah-80856.herokuapp.com/product/${id}`;
 
     // updating by fetch :))))
     fetch(url, {

@@ -10,7 +10,7 @@ const ManageItems = () => {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    const url = `http://localhost:5000/items?email=${user.email}`;
+    const url = `https://boiling-savannah-80856.herokuapp.com/items?email=${user.email}`;
     try {
       axios
         .get(url, {

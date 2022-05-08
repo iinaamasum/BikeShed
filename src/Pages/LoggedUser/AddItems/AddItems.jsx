@@ -14,7 +14,7 @@ const AddItems = () => {
     img: '',
   });
   const onSubmit = (data) => {
-    const url = 'http://localhost:5000/item';
+    const url = 'https://boiling-savannah-80856.herokuapp.com/item';
     axios
       .post(url, {
         ...data,

@@ -15,7 +15,7 @@ const AddProduct = () => {
     img: '',
   });
   const onSubmit = (data) => {
-    const url = 'http://localhost:5000/productUp';
+    const url = 'https://boiling-savannah-80856.herokuapp.com/productUp';
     axios
       .post(url, {
         ...data,

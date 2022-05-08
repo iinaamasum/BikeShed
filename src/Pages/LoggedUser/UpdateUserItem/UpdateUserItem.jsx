@@ -16,7 +16,7 @@ const UpdateUserItem = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = `http://localhost:5000/item/${itemId}`;
+    const url = `https://boiling-savannah-80856.herokuapp.com/item/${itemId}`;
 
     fetch(url)
       .then((res) => res.json())
@@ -30,7 +30,7 @@ const UpdateUserItem = () => {
       return toast.error('Please enter the quantity to add');
     }
 
-    const url = `http://localhost:5000/item/${id}`;
+    const url = `https://boiling-savannah-80856.herokuapp.com/item/${id}`;
     const q = parseInt(product.quantity) + add;
 
     axios
@@ -52,7 +52,7 @@ const UpdateUserItem = () => {
   };
   const handleRemoveOne = (id, e) => {
     const q = product.quantity - 1;
-    const url = `http://localhost:5000/item/${id}`;
+    const url = `https://boiling-savannah-80856.herokuapp.com/item/${id}`;
 
     // updating by fetch :))))
     fetch(url, {

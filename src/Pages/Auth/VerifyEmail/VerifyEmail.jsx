@@ -62,7 +62,7 @@ const VerifyEmail = () => {
           browser tab, please{' '}
           <a
             className="text-blue-700 underline"
-            href="http://localhost:3000/my-items"
+            href="https://warehouse-4de2f.web.app/my-items"
           >
             Click Here
           </a>

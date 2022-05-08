@@ -82,9 +82,12 @@ const SignUp = () => {
     if (userData.pass === userData.confirmPass) {
       await createUserWithEmailAndPassword(userData.email, userData.pass);
       await updateProfile({ displayName: userData.name });
-      const { data } = await axios.post('http://localhost:5000/login', {
-        email: userData.email,
-      });
+      const { data } = await axios.post(
+        'https://boiling-savannah-80856.herokuapp.com/login',
+        {
+          email: userData.email,
+        }
+      );
       localStorage.setItem('token', data.token);
       toast.success(
         `Congratulations ${user.displayName}. Account Created Successfully.`
@@ -102,9 +105,12 @@ const SignUp = () => {
         user?.reloadUserInfo?.providerUserInfo[0]?.providerId !== 'password'
       ) {
         const tokenSet = async () => {
-          const { data } = await axios.post('http://localhost:5000/login', {
-            email: await user.email,
-          });
+          const { data } = await axios.post(
+            'https://boiling-savannah-80856.herokuapp.com/login',
+            {
+              email: await user.email,
+            }
+          );
           localStorage.setItem('token', data.token);
         };
         tokenSet();

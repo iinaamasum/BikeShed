@@ -36,7 +36,7 @@ const AllProducts = () => {
   };
 
   const handleDelete = (id) => {
-    const url = `http://localhost:5000/product/${id}`;
+    const url = `https://boiling-savannah-80856.herokuapp.com/product/${id}`;
 
     fetch(url, {
       method: 'DELETE',

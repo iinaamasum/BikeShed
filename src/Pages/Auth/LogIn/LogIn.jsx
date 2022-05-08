@@ -61,9 +61,12 @@ const LogIn = () => {
       setErrors({ ...errors, passError: 'Password is required' });
     } else {
       await signInWithEmailAndPassword(userData.email, userData.pass);
-      const { data } = await axios.post('http://localhost:5000/login', {
-        email: userData.email,
-      });
+      const { data } = await axios.post(
+        'https://boiling-savannah-80856.herokuapp.com/login',
+        {
+          email: userData.email,
+        }
+      );
       localStorage.setItem('token', data.token);
     }
     e.target.reset();
@@ -72,9 +75,12 @@ const LogIn = () => {
   useEffect(() => {
     if (user) {
       const tokenSet = async () => {
-        const { data } = await axios.post('http://localhost:5000/login', {
-          email: await user.email,
-        });
+        const { data } = await axios.post(
+          'https://boiling-savannah-80856.herokuapp.com/login',
+          {
+            email: await user.email,
+          }
+        );
         localStorage.setItem('token', data.token);
       };
       tokenSet();
