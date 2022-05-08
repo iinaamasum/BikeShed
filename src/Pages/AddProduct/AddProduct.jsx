@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useState } from 'react';
+import FileBase64 from 'react-file-base64';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
@@ -9,11 +10,15 @@ import Navbar from '../Shared/Navbar/Navbar';
 const AddProduct = () => {
   const [user] = useAuthState(auth);
   const { register, handleSubmit, errors, reset } = useForm();
+  const [image, setImage] = useState({
+    img: '',
+  });
   const onSubmit = (data) => {
     const url = 'http://localhost:5000/productUp';
     axios
       .post(url, {
         ...data,
+        img: image.img,
       })
       .then((res) => {
         if (res.data.acknowledged) {
@@ -99,14 +104,12 @@ const AddProduct = () => {
             </div>
             <div>
               <label className="text-sm font-medium mt-1" htmlFor="img">
-                Image URL
+                Image of the product(optional)
               </label>
               <br />
-              <input
-                className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                placeholder="Image URL"
-                type="text"
-                {...register('img')}
+              <FileBase64
+                multiple={false}
+                onDone={({ base64 }) => setImage({ img: base64 })}
               />
             </div>
             <input
