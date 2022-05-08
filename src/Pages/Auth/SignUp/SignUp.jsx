@@ -96,7 +96,7 @@ const SignUp = () => {
 
   useEffect(() => {
     if (user) {
-      console.log(user);
+      // console.log(user);
       if (
         user?.emailVerified ||
         user?.reloadUserInfo?.providerUserInfo[0]?.providerId !== 'password'

@@ -6,6 +6,7 @@ import {
 } from 'react-firebase-hooks/auth';
 import { BsGoogle } from 'react-icons/bs';
 import { FaFacebook, FaGithub } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 import auth from '../../../firebase.init';
 
 const SocialLogin = () => {
@@ -15,6 +16,10 @@ const SocialLogin = () => {
     useSignInWithFacebook(auth);
   const [signInWithGithub, gitUser, gitlLoading, gitError] =
     useSignInWithGithub(auth);
+
+  if (googleError || fbError || gitError) {
+    toast.error(`Account Already Exists With This Particular Email`);
+  }
 
   return (
     <>

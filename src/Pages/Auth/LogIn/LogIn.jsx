@@ -71,6 +71,13 @@ const LogIn = () => {
 
   useEffect(() => {
     if (user) {
+      const tokenSet = async () => {
+        const { data } = await axios.post('http://localhost:5000/login', {
+          email: await user.email,
+        });
+        localStorage.setItem('token', data.token);
+      };
+      tokenSet();
       toast.success(`Welcome ${user.displayName}`);
       navigate(from, { replace: true });
     }
