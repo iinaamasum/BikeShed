@@ -96,11 +96,18 @@ const SignUp = () => {
 
   useEffect(() => {
     if (user) {
-      // console.log(user);
+      console.log(user);
       if (
         user?.emailVerified ||
         user?.reloadUserInfo?.providerUserInfo[0]?.providerId !== 'password'
       ) {
+        const tokenSet = async () => {
+          const { data } = await axios.post('http://localhost:5000/login', {
+            email: await user.email,
+          });
+          localStorage.setItem('token', data.token);
+        };
+        tokenSet();
         navigate(from, { replace: true });
       } else {
         toast.success('Email verification link sent to your email.');

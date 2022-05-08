@@ -32,8 +32,8 @@ const Service = () => {
                     up & Builds
                   </h2>
                   <p className="mb-5 text-gray-400 font-medium">
-                    Vel illum dolore eu feugiat nulla facilisis at vero eros et
-                    accu qui blandit
+                    Providing the best tunner up and builds for your bike. We
+                    have a team of experts who can help you with your bike.
                   </p>
                 </div>
 
@@ -43,8 +43,8 @@ const Service = () => {
                     and install
                   </h2>
                   <p className="mb-5 text-gray-400 font-medium">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                    sed do eiusmod
+                    Adjusting and installing the right parts in proper way is
+                    not easy. Our experts will do it for you.
                   </p>
                 </div>
                 <div className="">
@@ -53,8 +53,9 @@ const Service = () => {
                     Bike Fit
                   </h2>
                   <p className="mb-5 text-gray-400 font-medium">
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                    laboris
+                    Personal bike choice is a tuf part for customer. Our
+                    marketing team will suggest you how to make happy your
+                    customer.
                   </p>
                 </div>
                 <div className="">
@@ -63,8 +64,9 @@ const Service = () => {
                     Delivery
                   </h2>
                   <p className="mb-5 text-gray-400 font-medium">
-                    Vel illum dolore eu feugiat nulla facilisis at vero eros et
-                    accu qui blandit
+                    We are always ready to deliver your bikes to you. As we
+                    pretend to whole sell, the delivery cost will be paid by us.
+                    We will not charge you any extra cost.
                   </p>
                 </div>
               </div>
