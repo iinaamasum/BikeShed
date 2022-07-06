@@ -44,11 +44,13 @@ const AddProduct = () => {
             >
               <div className="bg-slate-200 my-10 lg:my16 w-full md:w-3/4 lg:w-3/5 mx-auto px-5 md:px-20 py-10 rounded">
                 <h2 className="text-center font-bold text-2xl md:text-3xl text-purple-700 mb-2">
-                  Add Desired Product to Global
+                  Add Desired Product to Global Only{' '}
+                  <span className="text-red-500">(Extra Section)</span>
                 </h2>
 
                 <h4 className="text-center text-2xl font-semibold mb-5">
-                  Want to add new item for specific logged user only?{' '}
+                  Want to add new item for specific logged user only Along with
+                  Global?{' '}
                   <Link className="underline text-blue-600" to="/add-items">
                     Click here
                   </Link>
