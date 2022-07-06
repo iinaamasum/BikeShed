@@ -87,7 +87,10 @@ function App() {
           <Route path="/*" element={<Error404 />} />
         </Routes>
         <ToastContainer />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 1f8d4fbe45c921c49cd05c74a66f768981b921a9
         <Footer />
       </RouteToTop>
     </>
